@@ -1,0 +1,36 @@
+<!--
+  Generated template for the Trip page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{trip.name}}</ion-title>
+
+    </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" [disabled]="currentLocationMarker" (click)="getCurrentPosition()" >
+        <ion-icon name="pin"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" [disabled]="!currentLocationMarker" (click)="addPOI()" >
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <div class="map-container">
+    <div id="map" style="width: 100%; height: 100%">
+    </div>
+  </div>
+</ion-content>

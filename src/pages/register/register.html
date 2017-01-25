@@ -1,0 +1,46 @@
+<!--
+  Generated template for the Register page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Create a tLog Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngIf="error" class="alert-message">
+    <ion-card-header>Error</ion-card-header>
+    <ion-card-content>{{error}}</ion-card-content>
+
+  </ion-card>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ion-list no-lines="">
+      <ion-item>
+      <ion-input type="text" placeholder="Username" formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="formErrors.username" class="item-md-danger">
+        <p>{{ formErrors.username }}</p>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+        </ion-item>
+      <ion-item *ngIf="formErrors.email" class="item-md-danger">
+        <p>{{ formErrors.email }}</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+        </ion-item>
+      <ion-item class="item-md-danger" *ngIf="formErrors.password" >
+        <p>{{ formErrors.password }}</p>
+      </ion-item>
+    </ion-list>
+    <button (click)="register()"  ion-button [disabled]="!registerForm.valid">Register</button>
+  </form>
+</ion-content>

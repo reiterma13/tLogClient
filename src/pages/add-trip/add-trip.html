@@ -1,0 +1,50 @@
+<!--
+  Generated template for the AddTrip page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Add a new Trip</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="tripForm" (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Name of the Trip</ion-label>
+        <ion-input type="text" formControlName="name" required></ion-input>
+      </ion-item>
+      <ion-item *ngIf="formErrors.name" class="item-md-danger">
+        {{ formErrors.name }}
+      </ion-item>
+      <ion-item>
+        <ion-label floating >Description</ion-label>
+        <ion-textarea type="text" formControlName="description" rows="5"></ion-textarea>
+      </ion-item>
+      <ion-item *ngIf="formErrors.description" class="item-md-danger">
+        {{ formErrors.description }}
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Start Date</ion-label>
+        <ion-datetime formControlName="begin" max="2020"></ion-datetime>
+      </ion-item>
+      <ion-item class="item-md-danger" *ngIf="formErrors.begin" >
+        {{ formErrors.begin }}
+      </ion-item>
+      <ion-item>
+        <ion-label floating>End Date</ion-label>
+        <ion-datetime formControlName="end" max="2020"></ion-datetime>
+      </ion-item>
+      <ion-item class="item-md-danger" *ngIf="formErrors.end" >
+        {{ formErrors.end }}
+      </ion-item>
+    </ion-list>
+    <button (click)="save()"  ion-button [disabled]="!tripForm.valid">Save</button>
+  </form>
+</ion-content>

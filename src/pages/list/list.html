@@ -1,0 +1,27 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>My Trips</ion-title>
+
+    </ion-navbar>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="addTrip()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item._id)">
+      <i class="fa fa-map-signs" aria-hidden="true"></i>
+      {{item.name}}
+
+    </button>
+  </ion-list>
+</ion-content>
