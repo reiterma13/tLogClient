@@ -17,6 +17,7 @@ export class Serverconfig {
   private _mineURI = `${this._host}/trip/mine`;
   private _tripURI = `${this._host}/trip`;
   private _poiURI = `${this.host}/poi`;
+  private _myPoiURI = `${this.host}/poi/mine`;
   private _allTripsURI = `${this._host}/trip/all`;
 
   public get host():string {return this._host};
@@ -26,6 +27,7 @@ export class Serverconfig {
   public get tripURI () {return this._tripURI};
   public get poiURI() {return this._poiURI};
   public get allTripsURI() {return this._allTripsURI};
+  public get myPoiURI() {return this._myPoiURI};
 
   constructor() {
   }

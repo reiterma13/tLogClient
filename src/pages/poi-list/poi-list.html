@@ -7,11 +7,11 @@
       </button>
 
       <ion-buttons>
-        <button ion-button icon-only ownTrips (click)="loadTrips()">
+        <button ion-button icon-only ownPOIs (click)="loadMyPOIs()">
           <ion-icon name="contact"></ion-icon>
         </button>
 
-        <button ion-button icon-only allTrips (click)="loadAllTrips()">
+        <button ion-button icon-only allPOIs (click)="loadAllPOIs()">
           <ion-icon name="contacts"></ion-icon>
         </button>
 
@@ -29,7 +29,7 @@
 
 <ion-content>
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item._id)">
+    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <i class="fa fa-map-signs" aria-hidden="true"></i>
       {{item.name}}
 

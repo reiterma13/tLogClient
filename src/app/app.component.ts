@@ -6,6 +6,7 @@ import { StatusBar } from 'ionic-native';
 
 import { ListPage } from '../pages/list/list';
 import {LoginPage} from "../pages/login/login";
+import {PoiListPage} from "../pages/poi-list/poi-list";
 
 
 @Component({
@@ -28,6 +29,7 @@ export class MyApp {
     this.pages = [
       { title: 'Login', component: LoginPage },
       { title: 'Trips', component: ListPage },
+      { title: 'POIs', component: PoiListPage }
     ];
   }
 

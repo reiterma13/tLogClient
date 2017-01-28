@@ -26,6 +26,8 @@ export class Tlog {
 
   getAllTrips = (): Promise<Array<Trip>> => this.authHttp.get(this.serverconfig.allTripsURI).toPromise().then((res) => res.json());
 
+  getMyPOIs = (): Promise<Array<POI>> => this.authHttp.get(this.serverconfig.myPoiURI).toPromise().then((res) => res.json());
+
   getAllPOIs = (): Promise<Array<POI>> => this.authHttp.get(this.serverconfig.poiURI).toPromise().then((res) => res.json());
 
   addTrip = (trip: Trip): Promise<Trip> =>

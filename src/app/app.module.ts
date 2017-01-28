@@ -18,6 +18,7 @@ import {TripPage} from "../pages/trip/trip";
 import {AddPoiPage} from "../pages/add-poi/add-poi";
 import {ShowPoiPage} from "../pages/show-poi/show-poi";
 import {AddImagePage} from "../pages/add-image/add-image";
+import {PoiListPage} from "../pages/poi-list/poi-list";
 
 
 let storage = new Storage();
@@ -43,7 +44,8 @@ export function getAuthHttp(http) {
     TripPage,
     AddPoiPage,
     ShowPoiPage,
-    AddImagePage
+    AddImagePage,
+    PoiListPage
   ],
   imports: [
     IonicModule.forRoot(MyApp), ReactiveFormsModule
@@ -60,7 +62,8 @@ export function getAuthHttp(http) {
     TripPage,
     AddPoiPage,
     ShowPoiPage,
-    AddImagePage
+    AddImagePage,
+    PoiListPage
   ],
   providers: [Security,
     {
