@@ -58,15 +58,17 @@ export class AddImagePage {
               private  serverconfig: Serverconfig) {
   }
 
-
   getPicture = (option:CameraOptions) => () => {
-    Camera.getPicture().then(imageURI => {
+    Camera.getPicture(option).then(imageURI => {
       this.image = imageURI;
     })
       .catch(err => {
         this.showAlert("ERROR", `Could not take picture (${err})`)
       });
   };
+
+
+
 
   takePhoto = this.getPicture(this.takePhotoOptions);
 

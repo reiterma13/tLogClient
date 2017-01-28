@@ -8,7 +8,6 @@ import { ListPage } from '../pages/list/list';
 import {LoginPage} from "../pages/login/login";
 
 
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -28,7 +27,7 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Login', component: LoginPage },
-      { title: 'My Trips', component: ListPage }
+      { title: 'Trips', component: ListPage },
     ];
   }
 
