@@ -17,6 +17,7 @@ export class ListPage {
   selectedItem: any;
   icons: string[];
   items: Array<Trip>;
+  searchItems: Array<Trip>;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,8 +28,23 @@ export class ListPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.items = [];
-
+    this.searchItems=[];
   }
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initSearchItems();
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.searchItems = this.searchItems.filter((items) => {
+        return (items.name.toLowerCase().indexOf(val.toLocaleLowerCase()) > -1);
+      })
+    }
+  }
+
+  initSearchItems = () => this.searchItems = this.items;
 
   addTrip = () => this.navCtrl.push(AddTripPage)
 
@@ -40,11 +56,12 @@ export class ListPage {
 
   loadAllTrips = () => {
     const loading = this.loadingCtrl.create({
-      content: "Fetching your trips"
+      content: "Fetching all trips"
     });
     loading.present()
       .then(this.tLogService.getAllTrips)
       .then(trips => this.items = trips).then(() => {
+      this.initSearchItems()
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no Trips yet. Press the Plus Icon to create one.")
@@ -63,6 +80,7 @@ export class ListPage {
     loading.present()
       .then(this.tLogService.getTrips)
       .then(trips => this.items = trips).then(() => {
+      this.initSearchItems()
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "You do not have any trips yet. Press the Plus Icon to create one.")
@@ -76,7 +94,8 @@ export class ListPage {
 
   ionViewWillEnter = () => {
     this.security.isNotloggedIn().then(exp => {
-      if (exp) this.navCtrl.setRoot(LoginPage); else this.loadTrips()
+      if (exp) {this.navCtrl.setRoot(LoginPage)}
+      else {this.loadTrips();}
     });
   }
 

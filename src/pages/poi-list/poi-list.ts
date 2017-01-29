@@ -17,6 +17,7 @@ export class PoiListPage {
   selectedItem: any;
   icons: string[];
   items: Array<POI>;
+  searchItems: Array<POI>;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,7 +28,23 @@ export class PoiListPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.items = [];
+    this.searchItems=[];
 
+  }
+
+  initSearchItems = () => this.searchItems = this.items;
+
+  getItems(ev: any) {
+    // Reset items back to all of the items
+    this.initSearchItems();
+    // set val to the value of the searchbar
+    let val = ev.target.value;
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.searchItems = this.searchItems.filter((items) => {
+        return (items.name.toLowerCase().indexOf(val.toLocaleLowerCase()) > -1);
+      })
+    }
   }
 
   addTrip = () => this.navCtrl.push(AddTripPage)
@@ -45,6 +62,7 @@ export class PoiListPage {
     loading.present()
       .then(this.tLogService.getAllPOIs)
       .then(pois => this.items = pois).then(() => {
+      this.initSearchItems()
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no POIs yet. Press the Plus Icon to create one.")
@@ -63,6 +81,7 @@ export class PoiListPage {
     loading.present()
       .then(this.tLogService.getMyPOIs)
       .then(pois => this.items = pois).then(() => {
+      this.initSearchItems()
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "You do not have any POIs yet. Press the Plus Icon to create one.")
@@ -82,7 +101,6 @@ export class PoiListPage {
 
 
   itemTapped(event, poi) {
-    console.log(poi);
     this.navCtrl.push(ShowPoiPage, {
       poi: poi
     });
