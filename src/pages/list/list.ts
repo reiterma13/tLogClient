@@ -46,13 +46,54 @@ export class ListPage {
 
   initSearchItems = () => this.searchItems = this.items;
 
-  addTrip = () => this.navCtrl.push(AddTripPage)
+  addTrip = () => this.navCtrl.push(AddTripPage);
 
   showAlert = (title: string, message: string) => this.alertCtrl.create({
     title: title,
     message: message,
     buttons: ['OK']
   }).present();
+
+
+  getRandom = (arr: Array<Trip> , n:number) => {
+    var result = new Array(n);
+    var len = arr.length;
+    var taken = new Array(len);
+    var tempResults = new Array(len);
+  if (n > len)
+    throw new RangeError("getRandom: more elements taken than available");
+  while (n--) {
+    var x = Math.floor(Math.random() * len);
+    result[n] = arr[x in taken ? taken[x] : x];
+    taken[x] = --len;
+  }
+    tempResults = result.filter(function(item,pos) {
+      return result.indexOf(item) === pos;
+    });
+
+
+    return tempResults;
+};
+
+  loadRandomTrips = () => {
+    const loading = this.loadingCtrl.create({
+      content: "Fetching random trips"
+    });
+    loading.present()
+      .then(this.tLogService.getAllTrips)
+      .then(trips => this.items = trips).then(() => {
+      this.items = this.getRandom(this.items, 5);
+      this.initSearchItems();
+      loading.dismiss();
+      if (this.items.length === 0) {
+        this.showAlert("INFO", "There are no Trips yet. Press the Plus Icon to create one.")
+      }
+    })
+      .catch(err => {
+        loading.dismiss();
+        this.showAlert("Error", `Could not retrieve list of trips: ${err.message || err}`);
+      });
+  }
 
   loadAllTrips = () => {
     const loading = this.loadingCtrl.create({
@@ -61,7 +102,7 @@ export class ListPage {
     loading.present()
       .then(this.tLogService.getAllTrips)
       .then(trips => this.items = trips).then(() => {
-      this.initSearchItems()
+      this.initSearchItems();
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no Trips yet. Press the Plus Icon to create one.")

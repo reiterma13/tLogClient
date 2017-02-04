@@ -74,6 +74,47 @@ export class PoiListPage {
       });
   }
 
+
+  getRandom = (arr: Array<POI> , n:number) => {
+    var result = new Array(n);
+    var len = arr.length;
+    var taken = new Array(len);
+    var tempResults = new Array(5);
+    if (n > len)
+      throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+      var x = Math.floor(Math.random() * len);
+      result[n] = arr[x in taken ? taken[x] : x];
+      taken[x] = --len;
+    }
+
+    tempResults = result.filter(function(item,pos) {
+      return result.indexOf(item) === pos;
+    });
+    return tempResults;
+  };
+
+  loadRandomPOIs = () => {
+    const loading = this.loadingCtrl.create({
+      content: "Fetching random POIs"
+    });
+    loading.present()
+      .then(this.tLogService.getAllPOIs)
+      .then(poi => this.items = poi).then(() => {
+      this.items = this.getRandom(this.items, 5);
+      this.initSearchItems();
+      loading.dismiss();
+      if (this.items.length === 0) {
+        this.showAlert("INFO", "There are no POIs yet. Press the Plus Icon to create one.")
+      }
+    })
+      .catch(err => {
+        loading.dismiss();
+        this.showAlert("Error", `Could not retrieve list of POIs: ${err.message || err}`);
+      });
+  }
+
+
   loadMyPOIs = () => {
     const loading = this.loadingCtrl.create({
       content: "Fetching your POIs"
