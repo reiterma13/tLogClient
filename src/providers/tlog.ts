@@ -50,6 +50,20 @@ export class Tlog {
       return res.json()
     });
 
+  rateTrip = (tripID: string, rating: number ): Promise<Trip> =>
+    this.authHttp.patch(`${this.serverconfig.poiURI}/rate/${tripID}`, rating)
+      .toPromise().then(res => {
+      console.log("GOT UPDATE Rate Trip RESPONSE: " + res.json());
+      return res.json()
+    });
+
+  likeTrip = (tripID: string, trip: Trip) : Promise<Trip> =>
+    this.authHttp.patch(`${this.serverconfig.tripURI}/like/${tripID}`,trip)
+      .toPromise().then(res => {
+      console.log("GOT UPDATE Like Trip RESPONSE: " + res.json());
+      return res.json()
+    });
+
   getImage = (imageId: string) =>
     this.authHttp.get(`${this.serverconfig.poiURI}/image/${imageId}`).toPromise();
 

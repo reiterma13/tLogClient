@@ -1,34 +1,29 @@
 import { Component } from '@angular/core';
-
 import {NavController, NavParams, AlertController, LoadingController} from 'ionic-angular';
-
 import {Security} from '../../providers/security';
 import {LoginPage} from "../login/login";
 import {Trip} from "../../models/models";
 import {Tlog} from "../../providers/tlog";
 import {AddTripPage} from "../add-trip/add-trip";
 import {TripPage} from "../trip/trip";
-import {FormGroup, FormBuilder} from "@angular/forms";
 import {RateTripPage} from "../rate-trip/rate-trip";
 
 @Component({
-  templateUrl: 'list.html'
+  selector: 'page-list-liked-trips',
+  templateUrl: 'list-liked-trips.html'
 })
-export class ListPage {
+export class ListLikedTripsPage {
   selectedItem: any;
   icons: string[];
   items: Array<Trip>;
   searchItems: Array<Trip>;
-  tripForm: FormGroup;
-  trip = new Trip();
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private security: Security,
               private tLogService: Tlog,
               private alertCtrl: AlertController,
-              private loadingCtrl: LoadingController,
-              private fb: FormBuilder) {
+              private loadingCtrl: LoadingController) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.items = [];
@@ -108,20 +103,6 @@ export class ListPage {
       trip: tripID
     });
   }
-
-
-  buildForm(): void {
-    this.tripForm = this.fb.group({
-      'liked': [this.trip.liked,[]]
-    });
-  }
-
-  onSubmit = () => {console.log("Submitted TRIP Form because liked is "+this.trip.liked)};
-
-  ngOnInit():void{
-    this.buildForm();
-  }
-
   save = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
     .then(
       trip => console.log(trip)
@@ -129,12 +110,6 @@ export class ListPage {
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
     );
-
-  likeTrip(tripID,liked){
-    console.log("oh you like )" +tripID + liked);
-    this.save(tripID,liked);
-  }
-
   dislikeTrip(tripID,liked){
     console.log("oh you don't like )" +tripID + liked);
     this.save(tripID,liked);
@@ -150,5 +125,7 @@ export class ListPage {
 
   }
 
-
 }
+
+
+

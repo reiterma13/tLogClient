@@ -1,0 +1,58 @@
+<!--
+  Generated template for the WantToVisit page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+
+
+  <ion-toolbar>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-buttons>
+        <button ion-button icon-only ownPOIs (click)="loadMyPOIs()">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+
+        <button ion-button icon-only allPOIs (click)="loadAllPOIs()">
+          <ion-icon name="contacts"></ion-icon>
+        </button>
+
+      </ion-buttons>
+    </ion-navbar>
+
+
+    <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="addTrip()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h2 style="text-align: center">POIs I want to visit</h2>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  
+
+
+  <ion-list >
+    <div *ngFor="let item of searchItems">
+      <div *ngIf="item.wantToVisit">
+        <button ion-item (click)="itemTapped($event, item._id)">
+          <i class="fa ion-ios-basket" style="color: deepskyblue" aria-hidden="true"></i>
+          {{item.name }}
+        </button>
+      </div>
+    </div>
+  </ion-list>
+
+
+</ion-content>
