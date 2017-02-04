@@ -1,0 +1,38 @@
+<!--
+  Generated template for the RateTrip page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Rate Trip Page </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p>Please rate trip {{name}}</p>
+  <div id="starRatingDiv">
+    <div type="submit" style="width: 30px !important;background-color:transparent !important; font-size:40px; border:none; font-weight: bold; color: lightgrey;" class="rateButton" ion-button icon-only rate
+         id="starOne"(click)="rateTrip(selectedItem,name,1)">
+      <i class="fa ion-ios-star" aria-hidden="true"></i>
+    </div>
+    <div type="submit" style="width: 30px !important;background-color:transparent !important; font-size:40px; border:none; font-weight: bold; color: lightgrey;" class="rateButton" ion-button icon-only rate
+         id="starTwo"(click)="rateTrip(selectedItem,name,2)">
+      <i class="fa ion-ios-star" aria-hidden="true"></i>
+    </div>
+    <div type="submit" style="width: 30px !important;background-color:transparent !important; font-size:40px; border:none; font-weight: bold; color: lightgrey;" class="rateButton" ion-button icon-only rate
+         id="starTree" (click)="rateTrip(selectedItem,name,3)">
+      <i class="fa ion-ios-star" aria-hidden="true"></i>
+    </div>
+    <div type="submit" style="width: 30px !important;background-color:transparent !important; font-size:40px; border:none; font-weight: bold; color: lightgrey;" class="rateButton" ion-button icon-only rate
+         id="starFour" (click)="rateTrip(selectedItem,name,4)">
+      <i class="fa ion-ios-star" aria-hidden="true"></i>
+    </div>
+    <div type="submit" style="width: 30px !important;background-color:transparent !important; font-size:40px; border:none; font-weight: bold; color: lightgrey;" class="rateButton" ion-button icon-only rate
+         id="starFive" (click)="rateTrip(selectedItem,name,5)">
+      <i class="fa ion-ios-star" aria-hidden="true"></i>
+    </div>
+  </div>
+  <button (click)="save(selectedItem,rating)"  ion-button>Save</button>
+</ion-content>

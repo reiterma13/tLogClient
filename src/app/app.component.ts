@@ -1,5 +1,4 @@
 import { Component, ViewChild } from '@angular/core';
-
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { StatusBar } from 'ionic-native';
@@ -8,6 +7,8 @@ import { ListPage } from '../pages/list/list';
 import {LoginPage} from "../pages/login/login";
 import {PoiListPage} from "../pages/poi-list/poi-list";
 
+import { WantToVisitPage } from "../pages/want-to-visit/want-to-visit";
+import { ListLikedTripsPage } from '../pages/list-liked-trips/list-liked-trips';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,7 +30,9 @@ export class MyApp {
     this.pages = [
       { title: 'Login', component: LoginPage },
       { title: 'Trips', component: ListPage },
-      { title: 'POIs', component: PoiListPage }
+      { title: 'POIs', component: PoiListPage },
+      { title: 'Liked Trips', component: ListLikedTripsPage },
+      { title: 'POIs I want to visit', component: WantToVisitPage }
     ];
   }
 

@@ -11,7 +11,6 @@ import 'rxjs/add/operator/map';
 export class Serverconfig {
 
   //private _host = "http://10.15.204.175:3000/api";
-  //  private _host = "http://10.22.0.35:3000/api";
   private _host = "http://10.0.0.6:3000/api";
   private _loginURI = `${this._host}/auth/login`;
   private _registerURI = `${this._host}/auth/signup`;
