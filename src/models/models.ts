@@ -21,6 +21,8 @@ export class POI {
   name: string;
   description: string;
   createdAt: Date;
+  liked:Boolean;
+  rated:Boolean;
   wantToVisit: Boolean;
   loc: {
     coordinates: number[]
@@ -38,5 +40,6 @@ export class Trip {
   creator?: {username: {local: string}};
   pois?:[POI];
   liked: Boolean;
-  rating: Number;
+  rated: Boolean;
+  wantToMakeTrip: Boolean;
 }

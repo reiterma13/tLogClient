@@ -9,6 +9,10 @@ import {PoiListPage} from "../pages/poi-list/poi-list";
 
 import { WantToVisitPage } from "../pages/want-to-visit/want-to-visit";
 import { ListLikedTripsPage } from '../pages/list-liked-trips/list-liked-trips';
+import {ListLikedPoisPage} from "../pages/list-liked-pois/list-liked-pois";
+import {ListRatedTripsPage} from "../pages/list-rated-trips/list-rated-trips";
+import {ListRatedPoisPage} from "../pages/list-rated-pois/list-rated-pois";
+import {WantToMakeTripPage} from "../pages/want-to-make-trip/want-to-make-trip";
 
 @Component({
   templateUrl: 'app.html'
@@ -31,8 +35,12 @@ export class MyApp {
       { title: 'Login', component: LoginPage },
       { title: 'Trips', component: ListPage },
       { title: 'POIs', component: PoiListPage },
+      { title: 'POIs I want to visit', component: WantToVisitPage },
+      { title: 'Trips I want to make', component: WantToMakeTripPage },
       { title: 'Liked Trips', component: ListLikedTripsPage },
-      { title: 'POIs I want to visit', component: WantToVisitPage }
+      { title: 'Liked POIs', component: ListLikedPoisPage },
+      { title: 'Rated Trips', component: ListRatedTripsPage },
+      { title: 'Rated POIs', component: ListRatedPoisPage }
     ];
   }
 

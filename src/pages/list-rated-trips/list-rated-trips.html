@@ -1,24 +1,32 @@
 <!--
-  Generated template for the WantToVisit page.
+  Generated template for the ListRatedTrips page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
+
   <ion-toolbar>
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
+
       <ion-buttons>
-        <button ion-button icon-only ownPOIs (click)="loadMyPOIs()">
+        <button ion-button icon-only ownTrips (click)="loadTrips()">
           <ion-icon name="contact"></ion-icon>
         </button>
-        <button ion-button icon-only allPOIs (click)="loadAllPOIs()">
+
+        <button ion-button icon-only allTrips (click)="loadAllTrips()">
           <ion-icon name="contacts"></ion-icon>
         </button>
+
       </ion-buttons>
+
+
     </ion-navbar>
+
+
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="addTrip()">
         <ion-icon name="add"></ion-icon>
@@ -28,27 +36,22 @@
 </ion-header>
 
 <ion-content>
-  <h2 style="text-align: center">POIs I want to visit</h2>
+  <h2 style="text-align: center">TRIPs I rated</h2>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list >
     <div *ngFor="let item of searchItems">
-      <div id="main" *ngIf="item.wantToVisit">
+      <div id="main" *ngIf="item.rated">
         <div id="div1">
           <button ion-item (click)="itemTapped($event, item._id)">
-            <i class="fa ion-ios-basket" style="color: greenyellow" aria-hidden="true"></i>
+            <i class="fa ion-ios-happy" style="color: greenyellow" aria-hidden="true"></i>
             {{item.name }}
           </button>
         </div>
         <div id="div2">
-          <button type="submit" class="likedTripsButtons dislikeButton" ion-button icon-only likeDislike  (click)="dislikeTrip(item._id,false)">
-            <i class="fa ion-ios-sad" aria-hidden="true"></i>
-          </button>
           <button type="submit" class="likedTripsButtons rateButton" ion-button icon-only rate  (click)="rateTrip(item._id,item.name)">
             <i class="fa ion-ios-star" aria-hidden="true"></i>
           </button>
-          <button type="submit" class="poiButtons wantToVisit" ion-button icon-only rate  (click)="wantToVisitPoi(item._id,item.name)">
-            <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
-          </button>
+
         </div>
       </div>
     </div>

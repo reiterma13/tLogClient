@@ -7,11 +7,18 @@ import {ShowPoiPage} from "../show-poi/show-poi";
 import {POI} from "../../models/models";
 import {AddTripPage} from "../add-trip/add-trip";
 import {RatePoiPage} from "../rate-poi/rate-poi";
+import {ListLikedPoisPage} from "../list-liked-pois/list-liked-pois";
+/*
+  Generated class for the ListRatedPois page.
 
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
 @Component({
-  templateUrl: 'poi-list.html'
+  selector: 'page-list-rated-pois',
+  templateUrl: 'list-rated-pois.html'
 })
-export class PoiListPage {
+export class ListRatedPoisPage {
   selectedItem: any;
   icons: string[];
   items: Array<POI>;
@@ -144,7 +151,6 @@ export class PoiListPage {
       poi: poi
     });
   }
-
   save = (poiID,liked) => this.tLogService.likePoi(poiID,liked)
     .then(
 
@@ -153,40 +159,24 @@ export class PoiListPage {
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
     );
-
-  likePoi(poiID,liked){
-    console.log("oh you like poi  )" +poiID + liked);
-    this.save(poiID,liked);
-  }
-
   dislikePoi(poiID,liked){
     console.log("oh you don't like )" +poiID + liked);
     this.save(poiID,liked);
-  }
 
+    this.navCtrl.push(ListLikedPoisPage, {
 
-  saveWantToVisitPoi=(poiID,wantToVisit) => this.tLogService.wantToVisitPoi(poiID,wantToVisit)
-    .then(
-      poi => console.log("save of wantToVisit worked and this is poi :"+poi)
-    )
-    .catch(
-      err => this.showAlert("ERROR",`${err.json().message}`)
-    );
-
-  wantToVisitPoi = (poiID,poiName,wantToVisit) => {
-    console.log("you want to visit poi "+poiName + " with "+ poiID + " = "+wantToVisit);
-    this.saveWantToVisitPoi(poiID,wantToVisit);
-  };
-
-  ratePoi(poiID, poiName) {
-    console.log("poiID is "+poiID);
-    console.log("poi name is "+poiID);
-    this.navCtrl.push(RatePoiPage, {
-      poi: poiID,
-      name: poiName
     });
 
   }
 
+  ratePoi(poiID, poiName) {
+    console.log("tripID is "+poiID);
+    console.log("trip name is "+poiName);
+    this.navCtrl.push(RatePoiPage, {
+      trip: poiID,
+      name: poiName
+    });
+
+  }
 
 }
