@@ -137,12 +137,19 @@ export class ListPage {
       });
   }
 
+  private loggedIn:boolean = false;
   ionViewWillEnter = () => {
-    this.security.isNotloggedIn().then(exp => {
-      if (exp) {this.navCtrl.setRoot(LoginPage)}
-      else {this.loadTrips();}
-    });
-  }
+
+    this.security.getToken().then((token) =>{if (token) {this.loggedIn = true;}})
+      .then((logged) =>{
+        if (this.loggedIn == false)
+        {this.navCtrl.push(LoginPage)}
+        else{
+          this.loadTrips();
+        }
+      });
+
+  };
 
   itemTapped(event, tripID) {
     this.navCtrl.push(TripPage, {
@@ -192,5 +199,6 @@ export class ListPage {
 
   }
 
+  logout = () => this.security.logout().then(() => {this.loggedIn = false; location.reload()});
 
 }

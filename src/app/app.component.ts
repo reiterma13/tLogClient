@@ -28,7 +28,6 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Login', component: LoginPage },
       { title: 'Trips', component: ListPage },
       { title: 'POIs', component: PoiListPage },
       { title: 'Liked Trips', component: ListLikedTripsPage },
