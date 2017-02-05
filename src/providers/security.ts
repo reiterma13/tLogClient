@@ -57,4 +57,6 @@ export class Security {
     .toPromise().then((res) => res.json().token).then(this.storeToken);
 
 
+  logout = () => this.storage.remove('id_token');
+
 }

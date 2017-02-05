@@ -132,11 +132,19 @@ export class PoiListPage {
       });
   }
 
+  private loggedIn:boolean = false;
   ionViewWillEnter = () => {
-    this.security.isNotloggedIn().then(exp => {
-      if (exp) this.navCtrl.setRoot(LoginPage); else this.loadMyPOIs()
-    });
-  }
+
+    this.security.getToken().then((token) =>{if (token) {this.loggedIn = true;}})
+      .then((logged) =>{
+        if (this.loggedIn == false)
+        {this.navCtrl.push(LoginPage)}
+        else{
+          this.loadMyPOIs();
+        }
+      });
+
+  };
 
 
   itemTapped(event, poi) {
@@ -144,6 +152,9 @@ export class PoiListPage {
       poi: poi
     });
   }
+
+  logout = () => this.security.logout().then(() => {this.loggedIn = false; location.reload()});
+
 
   save = (poiID,liked) => this.tLogService.likePoi(poiID,liked)
     .then(
