@@ -89,7 +89,7 @@ export class RateTripPage {
 
 
 
-  rateTrip = (tripID,tripName,rating,element) => {
+  rateTrip = (tripID,tripName,rating) => {
     console.log("you rated trip" +tripName + " with " + rating + " stars!");
 
     this.rating = rating;
@@ -147,27 +147,5 @@ export class RateTripPage {
     //this.action = this.tLogService.updateTrip;
   }
 
-/*
-  save = () => {
-    console.log("SAVING Trip!");
-    const trip = this.tripForm.value;
-    trip._id = this.trip._id;
-
-    console.log('save function');
-    console.log('trip id is '+trip._id);
-
-   this.action(this.navParams.get("tripID"), trip)
-      .then(poi => {
-        console.log("Saved POI successfully: "+JSON.stringify(poi));
-        this.navCtrl.pop();
-      })
-      .catch(
-        err => {
-          console.error("Could not save POI.: " + JSON.stringify(err));
-          this.showAlert("ERROR", `${err.json().message}`);
-        }
-      );
-  };
-  */
 
 }

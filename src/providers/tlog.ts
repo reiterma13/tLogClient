@@ -51,14 +51,14 @@ export class Tlog {
     });
 
   rateTrip = (tripID: string, rating: number ): Promise<Trip> =>
-    this.authHttp.patch(`${this.serverconfig.poiURI}/rate/${tripID}`, rating)
+    this.authHttp.patch(`${this.serverconfig.tripURI}/${tripID}/rate`, rating)
       .toPromise().then(res => {
       console.log("GOT UPDATE Rate Trip RESPONSE: " + res.json());
       return res.json()
     });
 
   likeTrip = (tripID: string, trip: Trip) : Promise<Trip> =>
-    this.authHttp.patch(`${this.serverconfig.tripURI}/like/${tripID}`,trip)
+    this.authHttp.patch(`${this.serverconfig.tripURI}/${tripID}/like`,trip)
       .toPromise().then(res => {
       console.log("GOT UPDATE Like Trip RESPONSE: " + res.json());
       return res.json()

@@ -165,7 +165,8 @@ export class ListPage {
 
   save = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
     .then(
-      trip => console.log(trip)
+
+      trip => console.log("save worked and this is trip :"+trip)
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)

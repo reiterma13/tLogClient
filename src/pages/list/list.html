@@ -43,18 +43,18 @@
           {{item.name}}
         </button>
         </div>
-        <div id="div2">
+        <div id="div2_list">
           <button type="submit" style="width: 30px !important;  background-color: #2ec95c;"
-                  class="likeButton" ion-button icon-only likeTrip  (click)="likeTrip(item._id,true)">
+                  class="listTripsButtons likeButton" ion-button icon-only likeTrip  (click)="likeTrip(item._id,true)">
             <i class="fa ion-ios-happy" aria-hidden="true"></i>
           </button>
 
           <button type="submit" style="width: 30px !important; background-color: #f30d0d !important;"
-                  class="dislikeButton" ion-button icon-only likeDislike  (click)="dislikeTrip(item._id,false)">
+                  class="listTripsButtons dislikeButton" ion-button icon-only likeDislike  (click)="dislikeTrip(item._id,false)">
             <i class="fa ion-ios-sad" aria-hidden="true"></i>
           </button>
           <button type="submit" style="width: 30px !important; background-color: yellow !important;"
-                  class="rateButton" ion-button icon-only rate  (click)="rateTrip(item._id,item.name)">
+                  class="listTripsButtons rateButton" ion-button icon-only rate  (click)="rateTrip(item._id,item.name)">
             <i class="fa ion-ios-star" aria-hidden="true"></i>
           </button>
         </div>

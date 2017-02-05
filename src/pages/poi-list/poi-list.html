@@ -1,28 +1,21 @@
 <ion-header>
-
   <ion-toolbar>
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-
       <ion-buttons>
         <button ion-button icon-only ownPOIs (click)="loadMyPOIs()">
           <ion-icon name="contact"></ion-icon>
         </button>
-
         <button ion-button icon-only allPOIs (click)="loadAllPOIs()">
           <ion-icon name="contacts"></ion-icon>
         </button>
-
         <button ion-button icon-only randomPOIs (click)="loadRandomPOIs()">
           <ion-icon name="bulb"></ion-icon>
         </button>
-
       </ion-buttons>
     </ion-navbar>
-
-
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="addTrip()">
         <ion-icon name="add"></ion-icon>
@@ -34,10 +27,27 @@
 <ion-content>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
-    <button ion-item *ngFor="let item of searchItems" (click)="itemTapped($event, item)">
-      <i class="fa fa-map-signs" aria-hidden="true"></i>
-      {{item.name}}
-
-    </button>
+      <div id="main"  class="likeDislikeDiv" *ngFor="let item of searchItems" style="white-space: nowrap  !important;">
+        <div id="div1">
+          <button style="width: 200px !important" ion-item (click)="itemTapped($event, item._id)" style="white-space: nowrap !important;">
+            <i class="fa fa-map-signs" aria-hidden="true"></i>
+            {{item.name}}
+          </button>
+        </div>
+        <div id="div2">
+          <button type="submit" class="poiButtons likeButton" ion-button icon-only likeTrip  (click)="likeTrip(item._id,true)">
+            <i class="fa ion-ios-happy " aria-hidden="true"></i>
+          </button>
+          <button type="submit" class="poiButtons dislikeButton" ion-button icon-only likeDislike  (click)="dislikeTrip(item._id,false)">
+            <i class="fa ion-ios-sad" aria-hidden="true"></i>
+          </button>
+          <button type="submit"class="poiButtons rateButton" ion-button icon-only rate  (click)="rateTrip(item._id,item.name)">
+            <i class="fa ion-ios-star" aria-hidden="true"></i>
+          </button>
+          <button type="submit" class="poiButtons wantToVisit" ion-button icon-only rate  (click)="wantToVisitPoi(item._id,item.name)">
+            <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
   </ion-list>
 </ion-content>

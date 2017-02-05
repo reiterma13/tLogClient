@@ -1,3 +1,28 @@
-page-poi-list {
-
+#main{
+  margin: 0;
+  width: 70%;
+}
+#div1{
+  height: 30px;
+  min-width: 40%;
+  float: left;
+}
+#div2{
+  width:30%;
+}
+.poiButtons{
+  width: 30px !important;
+  font-size: 30px !important;
+}
+.poiButtons.likeButton{
+  background-color: #2ec95c;
+}
+.poiButtons.dislikeButton{
+  background-color: #f30d0d !important;
+}
+.poiButtons.rateButton{
+  background-color: yellow !important;
+}
+.poiButtons.wantToVisit{
+  background-color: blue !important
 }
