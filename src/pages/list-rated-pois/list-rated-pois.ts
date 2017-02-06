@@ -170,10 +170,10 @@ export class ListRatedPoisPage {
   }
 
   ratePoi(poiID, poiName) {
-    console.log("tripID is "+poiID);
-    console.log("trip name is "+poiName);
+    console.log("poiID is "+poiID);
+    console.log("poi name is "+poiName);
     this.navCtrl.push(RatePoiPage, {
-      trip: poiID,
+      poi: poiID,
       name: poiName
     });
 

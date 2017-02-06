@@ -4,7 +4,6 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { ListPage } from '../pages/list/list';
-import {LoginPage} from "../pages/login/login";
 import {PoiListPage} from "../pages/poi-list/poi-list";
 
 import { WantToVisitPage } from "../pages/want-to-visit/want-to-visit";

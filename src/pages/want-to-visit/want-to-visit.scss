@@ -1,3 +1,21 @@
 page-want-to-visit {
-
+}
+#main{
+  margin: 0;
+  width: 70%;
+}
+#div1{
+  height: 30px;
+  min-width: 40%;
+  float: left;
+}
+#div2{
+  width:30%;
+}
+.wantToVisitButtons{
+  width: 30px !important;
+  font-size: 30px !important;
+}
+.wantToVisitButtons.wantIsNot{
+  background-color: red;
 }

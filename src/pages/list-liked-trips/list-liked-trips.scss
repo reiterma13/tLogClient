@@ -1,28 +1,22 @@
 page-list-liked-trips {
 
 }
-body{
-  margin: 0;
-  width: 100%;
-}
 #main{
+  margin: 0;
   width: 70%;
-  white-space: nowrap;
 }
 #div1{
   height: 30px;
-  width:  80%;
+  min-width: 40%;
+  float: left;
 }
-#div2_list{
-  width: auto;
+#div2{
+  width:30%;
 }
-.likedTripsButtons{
+.likeTripsButtons{
   width: 30px !important;
   font-size: 30px !important;
 }
-.likedTripsButtons.dislikeButton{
-  background-color: #f30d0d !important;
-}
-.likedTripsButtons.rateButton{
-  background-color: yellow !important;
+.likeTripsButtons.likeIsNot{
+  background-color: red;
 }

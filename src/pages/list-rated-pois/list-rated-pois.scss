@@ -16,13 +16,13 @@ body{
 #div2_list{
   width: auto;
 }
-.likedPoisButtons{
-  width: 30px !important;
-  font-size: 30px !important;
+.ratedPoisButtons{
+  background: transparent;
 }
-.likedPoisButtons.dislikeButton{
-  background-color: #f30d0d !important;
+.ratedPoisButtons i{
+  font-size: 30px;
+  color:lightgrey;
 }
-.likedPoisButtons.rateButton{
-  background-color: yellow !important;
+.ratedPoisButtons i.goldStar{
+  color:gold !important;
 }

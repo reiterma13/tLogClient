@@ -170,7 +170,9 @@ export class ListPage {
     this.buildForm();
   }
 
-  save = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
+
+
+  saveLike = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
     .then(
 
       trip => console.log("save worked and this is trip :"+trip)
@@ -180,13 +182,23 @@ export class ListPage {
     );
 
   likeTrip(tripID,liked){
-    console.log("oh you like )" +tripID + liked);
-    this.save(tripID,liked);
-  }
+    if(liked==true){
+      liked=false;
+      console.log("oh you don't like )" +tripID + liked);
 
-  dislikeTrip(tripID,liked){
-    console.log("oh you don't like )" +tripID + liked);
-    this.save(tripID,liked);
+    }else if(liked==false){
+      liked=true;
+      console.log("oh you like )" +tripID + liked);
+
+    }else{
+      console.log("oh you like )" +tripID + liked);
+    }
+    this.saveLike(tripID,liked);
+
+    this.navCtrl.push(ListPage, {
+
+    });
+
   }
 
   rateTrip(tripID, tripName) {
@@ -200,5 +212,37 @@ export class ListPage {
   }
 
   logout = () => this.security.logout().then(() => {this.loggedIn = false; location.reload()});
+
+
+  saveWantToMakeTrip = (tripID,want) => this.tLogService.wantToMakeTrip(tripID,want)
+  .then(
+
+    trip => console.log("save want worked and this is trip :"+trip)
+  )
+  .catch(
+    err => this.showAlert("ERROR",`${err.json().message}`)
+  );
+
+  wantToMakeTrip(tripID,want){
+    console.log("want is "+want)
+    if(want==true){
+      want=false;
+      console.log("oh you want to make trip  )" +tripID + want);
+
+    }else if(want==false){
+      want=true;
+      console.log("oh you want to make trip )" +tripID + want);
+
+    }else{
+      console.log("default)" +tripID + want);
+      want=false;
+    }
+    this.saveWantToMakeTrip(tripID,want);
+
+    this.navCtrl.push(ListPage, {
+
+    });
+
+  }
 
 }

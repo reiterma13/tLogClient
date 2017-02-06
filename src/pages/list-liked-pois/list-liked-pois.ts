@@ -6,7 +6,6 @@ import {Tlog} from "../../providers/tlog";
 import {ShowPoiPage} from "../show-poi/show-poi";
 import {POI} from "../../models/models";
 import {AddTripPage} from "../add-trip/add-trip";
-import {RatePoiPage} from "../rate-poi/rate-poi";
 
 /*
   Generated class for the ListLikedPois page.
@@ -151,30 +150,29 @@ export class ListLikedPoisPage {
       poi: poi
     });
   }
-  save = (poiID,liked) => this.tLogService.likePoi(poiID,liked)
+  save = (poiID, liked) => this.tLogService.likePoi(poiID, liked)
     .then(
-
-      poi => console.log("save worked and this is poi :"+poi)
+      poi => console.log("save worked and this is poi :" + poi)
     )
     .catch(
-      err => this.showAlert("ERROR",`${err.json().message}`)
+      err => this.showAlert("ERROR", `${err.json().message}`)
     );
-  dislikePoi(poiID,liked){
-    console.log("oh you don't like )" +poiID + liked);
-    this.save(poiID,liked);
+
+  likePoi(poiID, liked) {
+    if (liked == true) {
+      liked = false;
+      console.log("oh you don't like )" + poiID + liked);
+
+    } else if (liked == false) {
+      liked = true;
+      console.log("oh you like )" + poiID + liked);
+
+    } else {
+      console.log("oh you like )" + poiID + liked);
+    }
+    this.save(poiID, liked);
 
     this.navCtrl.push(ListLikedPoisPage, {
-
-    });
-
-  }
-
-  ratePoi(poiID, poiName) {
-    console.log("tripID is "+poiID);
-    console.log("trip name is "+poiName);
-    this.navCtrl.push(RatePoiPage, {
-      trip: poiID,
-      name: poiName
     });
 
   }

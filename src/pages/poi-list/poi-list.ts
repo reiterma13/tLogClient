@@ -26,7 +26,7 @@ export class PoiListPage {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.items = [];
-    this.searchItems=[];
+    this.searchItems = [];
 
   }
 
@@ -73,7 +73,7 @@ export class PoiListPage {
   }
 
 
-  getRandom = (arr: Array<POI> , n:number) => {
+  getRandom = (arr: Array<POI>, n: number) => {
     var result = new Array(n);
     var len = arr.length;
     var taken = new Array(len);
@@ -86,7 +86,7 @@ export class PoiListPage {
       taken[x] = --len;
     }
 
-    tempResults = result.filter(function(item,pos) {
+    tempResults = result.filter(function (item, pos) {
       return result.indexOf(item) === pos;
     });
     return tempResults;
@@ -132,14 +132,19 @@ export class PoiListPage {
       });
   }
 
-  private loggedIn:boolean = false;
+  private loggedIn: boolean = false;
   ionViewWillEnter = () => {
 
-    this.security.getToken().then((token) =>{if (token) {this.loggedIn = true;}})
-      .then((logged) =>{
-        if (this.loggedIn == false)
-        {this.navCtrl.push(LoginPage)}
-        else{
+    this.security.getToken().then((token) => {
+      if (token) {
+        this.loggedIn = true;
+      }
+    })
+      .then((logged) => {
+        if (this.loggedIn == false) {
+          this.navCtrl.push(LoginPage)
+        }
+        else {
           this.loadMyPOIs();
         }
       });
@@ -153,41 +158,69 @@ export class PoiListPage {
     });
   }
 
-  logout = () => this.security.logout().then(() => {this.loggedIn = false; location.reload()});
+  logout = () => this.security.logout().then(() => {
+    this.loggedIn = false;
+    location.reload()
+  });
 
 
-  save = (poiID,liked) => this.tLogService.likePoi(poiID,liked)
+  save = (poiID, liked) => this.tLogService.likePoi(poiID, liked)
+    .then(
+      poi => console.log("save worked and this is poi :" + poi)
+    )
+    .catch(
+      err => this.showAlert("ERROR", `${err.json().message}`)
+    );
+
+  likePoi(poiID, liked) {
+    if (liked == true) {
+      liked = false;
+      console.log("oh you don't like )" + poiID + liked);
+
+    } else if (liked == false) {
+      liked = true;
+      console.log("oh you like )" + poiID + liked);
+
+    } else {
+      console.log("oh you like )" + poiID + liked);
+    }
+    this.save(poiID, liked);
+
+    this.navCtrl.push(PoiListPage, {
+    });
+
+  }
+
+  saveWantToVisitPoi = (tpoiID,want) => this.tLogService.wantToVistitPoi(tpoiID,want)
     .then(
 
-      poi => console.log("save worked and this is poi :"+poi)
+      trip => console.log("save want worked and this is want :"+want)
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
     );
 
-  likePoi(poiID,liked){
-    console.log("oh you like poi  )" +poiID + liked);
-    this.save(poiID,liked);
+  wantToVisitPoi(tpoiID,want){
+    console.log("want is "+want)
+    if(want==true){
+      want=false;
+      console.log("oh you want to visit poi  )" +tpoiID + want);
+
+    }else if(want==false){
+      want=true;
+      console.log("oh you want to visit poi )" +tpoiID + want);
+
+    }else{
+      console.log("default)" +tpoiID + want);
+      want=false;
+    }
+    this.saveWantToVisitPoi(tpoiID,want);
+
+    this.navCtrl.push(PoiListPage, {
+
+    });
+
   }
-
-  dislikePoi(poiID,liked){
-    console.log("oh you don't like )" +poiID + liked);
-    this.save(poiID,liked);
-  }
-
-
-  saveWantToVisitPoi=(poiID,wantToVisit) => this.tLogService.wantToVisitPoi(poiID,wantToVisit)
-    .then(
-      poi => console.log("save of wantToVisit worked and this is poi :"+poi)
-    )
-    .catch(
-      err => this.showAlert("ERROR",`${err.json().message}`)
-    );
-
-  wantToVisitPoi = (poiID,poiName,wantToVisit) => {
-    console.log("you want to visit poi "+poiName + " with "+ poiID + " = "+wantToVisit);
-    this.saveWantToVisitPoi(poiID,wantToVisit);
-  };
 
   ratePoi(poiID, poiName) {
     console.log("poiID is "+poiID);

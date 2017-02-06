@@ -109,19 +109,8 @@ export class ListRatedTripsPage {
       trip: tripID
     });
   }
-  save = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
-    .then(
-      trip => console.log(trip)
-    )
-    .catch(
-      err => this.showAlert("ERROR",`${err.json().message}`)
-    );
-  dislikeTrip(tripID,liked){
-    console.log("oh you don't like )" +tripID + liked);
-    this.save(tripID,liked);
-  }
 
-  rateTrip(tripID, tripName) {
+  rateTrip(tripID, tripName,rating) {
     console.log("tripID is "+tripID);
     console.log("trip name is "+tripName);
     this.navCtrl.push(RateTripPage, {

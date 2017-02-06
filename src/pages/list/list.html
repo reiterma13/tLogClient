@@ -1,28 +1,21 @@
 <ion-header>
-
   <ion-toolbar>
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-
       <ion-buttons>
         <button ion-button icon-only ownTrips (click)="loadTrips()">
           <ion-icon name="contact"></ion-icon>
         </button>
-
         <button ion-button icon-only allTrips (click)="loadAllTrips()">
           <ion-icon name="contacts"></ion-icon>
         </button>
-
         <button ion-button icon-only randomTrips (click)="loadRandomTrips()">
           <ion-icon name="bulb"></ion-icon>
         </button>
-
       </ion-buttons>
     </ion-navbar>
-
-
     <ion-buttons end>
       <button ion-button color="danger" (click)=logout()>Logout</button>
       <button ion-button icon-only color="royal" (click)="addTrip()">
@@ -33,11 +26,11 @@
 </ion-header>
 
 <ion-content>
+  <h2 style="text-align: center">Trip List</h2>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
     <form [formGroup]="tripForm">
       <div id="main"  class="likeDislikeDiv" *ngFor="let item of searchItems" style="white-space: nowrap  !important;">
-
         <div id="div1">
         <button style="width: 200px !important" ion-item (click)="itemTapped($event, item._id)" style="white-space: nowrap !important;">
           <i class="fa fa-map-signs" aria-hidden="true"></i>
@@ -45,24 +38,22 @@
         </button>
         </div>
         <div id="div2_list">
-          <button type="submit" style="width: 30px !important;  background-color: #2ec95c;"
-                  class="listTripsButtons likeButton" ion-button icon-only likeTrip  (click)="likeTrip(item._id,true)">
-            <i class="fa ion-ios-happy" aria-hidden="true"></i>
-          </button>
-
-          <button type="submit" style="width: 30px !important; background-color: #f30d0d !important;"
-                  class="listTripsButtons dislikeButton" ion-button icon-only likeDislike  (click)="dislikeTrip(item._id,false)">
-            <i class="fa ion-ios-sad" aria-hidden="true"></i>
+          <button type="submit"  style="width: 30px !important;"
+                  class="listTripsButtons likedIs{{item.liked}}" ion-button icon-only like
+                  (click)="likeTrip(item._id,item.liked)">
+            <i class="fa ion-ios-{{item.liked==true?'happy':'sad'}}" aria-hidden="true"></i>
           </button>
           <button type="submit" style="width: 30px !important; background-color: yellow !important;"
-                  class="listTripsButtons rateButton" ion-button icon-only rate  (click)="rateTrip(item._id,item.name)">
+                  class="listTripsButtons rateButton" ion-button icon-only rate
+                  (click)="rateTrip(item._id,item.name)">
             <i class="fa ion-ios-star" aria-hidden="true"></i>
           </button>
-          <button type="submit" class="poiButtons wantToVisit" ion-button icon-only rate  (click)="wantToMakeTrip(item._id,item.name)">
+          <button type="submit" style="width: 30px !important;"
+                  class="listTripsButtons wantIs{{item.want}}" ion-button icon-only want
+                  (click)="wantToMakeTrip(item._id,item.want)">
             <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
           </button>
         </div>
-
       </div>
     </form>
   </ion-list>
