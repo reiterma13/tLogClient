@@ -16,13 +16,14 @@ body{
 #div2_list{
   width: auto;
 }
-.likedTripsButtons{
-  width: 30px !important;
-  font-size: 30px !important;
+.ratedTripsButtons{
+  background: transparent;
 }
-.likedTripsButtons.dislikeButton{
-  background-color: #f30d0d !important;
+.ratedTripsButtons i{
+  font-size: 30px;
+  color:lightgrey;
 }
-.likedTripsButtons.rateButton{
-  background-color: yellow !important;
+.ratedTripsButtons i.goldStar{
+  color:gold !important;
 }
+

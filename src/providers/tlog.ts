@@ -50,19 +50,26 @@ export class Tlog {
       return res.json()
     });
 
-  rateTrip = (tripID: string, rating: number ): Promise<Trip> =>
-    this.authHttp.patch(`${this.serverconfig.tripURI}/${tripID}/rate`, rating)
+  rateTrip = (tripID: string, rating: number ): Promise<Trip> =>{
+    let ratingO = {number: rating};
+    console.log("rating is "+ratingO);
+    return this.authHttp.patch(`${this.serverconfig.tripURI}/${tripID}/rate`, ratingO)
       .toPromise().then(res => {
       console.log("GOT UPDATE Rate Trip RESPONSE: " + res.json());
       return res.json()
     });
+  }
 
-  ratePoi = (poiID: string, rating: number ): Promise<POI> =>
-    this.authHttp.patch(`${this.serverconfig.poiURI}/${poiID}/rate`, rating)
+  ratePoi = (poiID: string, rating: number ): Promise<POI> => {
+
+    let ratingO = {number: rating};
+    console.log("rating is "+ratingO);
+    return this.authHttp.patch(`${this.serverconfig.poiURI}/${poiID}/rate`, ratingO)
       .toPromise().then(res => {
       console.log("GOT UPDATE Rate Poi RESPONSE: " + res.json());
       return res.json()
     });
+  }
 
   likeTrip = (tripID: string, trip: Trip) : Promise<Trip> =>
   this.authHttp.patch(`${this.serverconfig.tripURI}/${tripID}/like`,trip)
@@ -78,17 +85,17 @@ export class Tlog {
       return res.json()
     });
 
-  wantToVisitPoi = (poiID: string, poi: POI) : Promise<POI> =>
-    this.authHttp.patch(`${this.serverconfig.poiURI}/${poiID}/wantToVisitPoi`,poi)
+  wantToVistitPoi = (poiID: string, poi: POI) : Promise<POI> =>
+    this.authHttp.patch(`${this.serverconfig.poiURI}/${poiID}/want`,poi)
       .toPromise().then(res => {
-      console.log("GOT UPDATE wantToVisitPoi RESPONSE: " + res.json());
+      console.log("GOT UPDATE Want Poi RESPONSE: " + res.json());
       return res.json()
     });
 
   wantToMakeTrip = (tripID: string, trip: Trip) : Promise<Trip> =>
-    this.authHttp.patch(`${this.serverconfig.poiURI}/${tripID}/wantToMakeTrip`,trip)
+    this.authHttp.patch(`${this.serverconfig.tripURI}/${tripID}/want`,trip)
       .toPromise().then(res => {
-      console.log("GOT UPDATE wantToMakeTrip RESPONSE: " + res.json());
+      console.log("GOT UPDATE Want Trip RESPONSE: " + res.json());
       return res.json()
     });
 

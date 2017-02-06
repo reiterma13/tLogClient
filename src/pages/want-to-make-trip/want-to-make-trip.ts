@@ -7,7 +7,6 @@ import {Tlog} from "../../providers/tlog";
 import {AddTripPage} from "../add-trip/add-trip";
 import {TripPage} from "../trip/trip";
 import {FormGroup, FormBuilder} from "@angular/forms";
-import {RateTripPage} from "../rate-trip/rate-trip";
 
 /*
   Generated class for the WantToMakeTrip page.
@@ -168,34 +167,35 @@ export class WantToMakeTripPage {
     this.buildForm();
   }
 
-  save = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
+  saveWantToMakeTrip = (tripID,want) => this.tLogService.wantToMakeTrip(tripID,want)
     .then(
 
-      trip => console.log("save worked and this is trip :"+trip)
+      trip => console.log("save want worked and this is trip :"+trip)
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
     );
 
-  likeTrip(tripID,liked){
-    console.log("oh you like )" +tripID + liked);
-    this.save(tripID,liked);
-  }
+  wantToMakeTrip(tripID,want){
+    console.log("want is "+want);
+    if(want==true){
+      want=false;
+      console.log("oh you want to make trip  )" +tripID + want);
 
-  dislikeTrip(tripID,liked){
-    console.log("oh you don't like )" +tripID + liked);
-    this.save(tripID,liked);
-  }
+    }else if(want==false){
+      want=true;
+      console.log("oh you want to make trip )" +tripID + want);
 
-  rateTrip(tripID, tripName) {
-    console.log("tripID is "+tripID);
-    console.log("trip name is "+tripName);
-    this.navCtrl.push(RateTripPage, {
-      trip: tripID,
-      name: tripName
+    }else{
+      console.log("default)" +tripID + want);
+      want=false;
+    }
+    this.saveWantToMakeTrip(tripID,want);
+
+    this.navCtrl.push(WantToMakeTripPage, {
+
     });
 
   }
-
 
 }

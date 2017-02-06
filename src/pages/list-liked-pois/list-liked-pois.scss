@@ -1,28 +1,21 @@
 page-list-liked-pois {
-
-}
-body{
-  margin: 0;
-  width: 100%;
 }
 #main{
+  margin: 0;
   width: 70%;
-  white-space: nowrap;
 }
 #div1{
   height: 30px;
-  width:  80%;
+  min-width: 40%;
+  float: left;
 }
-#div2_list{
-  width: auto;
+#div2{
+  width:30%;
 }
 .likedPoisButtons{
   width: 30px !important;
   font-size: 30px !important;
 }
-.likedPoisButtons.dislikeButton{
-  background-color: #f30d0d !important;
-}
-.likedPoisButtons.rateButton{
-  background-color: yellow !important;
+.likedPoisButtons.likeIsNot{
+  background-color: red;
 }

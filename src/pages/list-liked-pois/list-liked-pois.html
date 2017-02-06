@@ -5,28 +5,17 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-toolbar>
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-
       <ion-buttons>
         <button ion-button icon-only ownTrips (click)="loadTrips()">
           <ion-icon name="contact"></ion-icon>
         </button>
-
-        <button ion-button icon-only allTrips (click)="loadAllTrips()">
-          <ion-icon name="contacts"></ion-icon>
-        </button>
-
       </ion-buttons>
-
-
     </ion-navbar>
-
-
     <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="addTrip()">
         <ion-icon name="add"></ion-icon>
@@ -48,14 +37,10 @@
           </button>
         </div>
         <div id="div2">
-          <button type="submit" class="likedPoisButtons dislikeButton" ion-button icon-only likeDislike  (click)="dislikePoi(item._id,false)">
-            <i class="fa ion-ios-sad" aria-hidden="true"></i>
-          </button>
-          <button type="submit" class="likedPoisButtons rateButton" ion-button icon-only rate  (click)="ratePoi(item._id,item.name)">
-            <i class="fa ion-ios-star" aria-hidden="true"></i>
-          </button>
-          <button type="submit" class="poiButtons wantToVisit" ion-button icon-only rate  (click)="wantToVisitPoi(item._id,item.name)">
-            <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
+          <button type="submit" style="width: 30px !important;"
+                  class="likedPoisButtons likeIsNot" ion-button icon-only want
+                  (click)="likePoi(item._id,item.want)">
+            <i class="fa ion-ios-remove-circle" aria-hidden="true"></i>
           </button>
         </div>
       </div>

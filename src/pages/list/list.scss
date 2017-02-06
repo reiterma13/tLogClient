@@ -16,15 +16,18 @@ body{
   width: 30px !important;
   font-size: 30px !important;
 }
-.listTripsButtons.likeButton{
+.listTripsButtons.likedIstrue{
   background-color: #2ec95c;
 }
-.listTripsButtons.dislikeButton{
-  background-color: #f30d0d !important;
+.listTripsButtons.likedIsfalse{
+  background-color: lightgrey !important;
 }
 .listTripsButtons.rateButton{
   background-color: yellow !important;
 }
-.listTripsButtons.wantToVisit{
-  background-color: blue !important
+.listTripsButtons.wantIstrue{
+  background-color: #2ec95c !important
+}
+.listTripsButtons.wantIsfalse{
+  background-color: lightgrey !important
 }

@@ -1,26 +1,15 @@
 <ion-header>
-
   <ion-toolbar>
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-
       <ion-buttons>
         <button ion-button icon-only ownTrips (click)="loadTrips()">
           <ion-icon name="contact"></ion-icon>
         </button>
-
-        <button ion-button icon-only allTrips (click)="loadAllTrips()">
-          <ion-icon name="contacts"></ion-icon>
-        </button>
-
       </ion-buttons>
-
-
     </ion-navbar>
-
-
     <ion-buttons end>
       <button ion-button color="danger" (click)=logout()>Logout</button>
       <button ion-button icon-only color="royal" (click)="addTrip()">
@@ -43,14 +32,10 @@
               </button>
             </div>
             <div id="div2">
-              <button type="submit" class="likedTripsButtons dislikeButton" ion-button icon-only likeDislike  (click)="dislikeTrip(item._id,false)">
-                <i class="fa ion-ios-sad" aria-hidden="true"></i>
-              </button>
-              <button type="submit" class="likedTripsButtons rateButton" ion-button icon-only rate  (click)="rateTrip(item._id,item.name)">
-                <i class="fa ion-ios-star" aria-hidden="true"></i>
-              </button>
-              <button type="submit" class="poiButtons wantToVisit" ion-button icon-only rate  (click)="wantToMakeTrip(item._id,item.name)">
-                <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
+              <button type="submit" style="width: 30px !important;"
+                      class="likeTripsButtons likeIsNot" ion-button icon-only want
+                      (click)="likeTrip(item._id,item.liked)">
+                <i class="fa ion-ios-remove-circle" aria-hidden="true"></i>
               </button>
             </div>
         </div>

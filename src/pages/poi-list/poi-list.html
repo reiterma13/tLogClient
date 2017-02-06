@@ -40,16 +40,17 @@
           </button>
         </div>
         <div id="div2">
-          <button type="submit" class="poiButtons likeButton" ion-button icon-only likePoi  (click)="likePoi(item._id,true)">
-            <i class="fa ion-ios-happy " aria-hidden="true"></i>
-          </button>
-          <button type="submit" class="poiButtons dislikeButton" ion-button icon-only likeDislike  (click)="dislikePoi(item._id,false)">
-            <i class="fa ion-ios-sad" aria-hidden="true"></i>
+          <button type="submit"
+                  class="listTripsButtons likedIs{{item.liked}}" ion-button icon-only likeTrip
+                  (click)="likePoi(item._id,item.liked)">
+            <i class="fa ion-ios-{{item.liked==true?'happy':'sad'}}" aria-hidden="true"></i>
           </button>
           <button type="submit"class="poiButtons rateButton" ion-button icon-only rate  (click)="ratePoi(item._id,item.name)">
             <i class="fa ion-ios-star" aria-hidden="true"></i>
           </button>
-          <button type="submit" class="poiButtons wantToVisit" ion-button icon-only rate  (click)="wantToVisitPoi(item._id,item.name)">
+          <button type="submit" style="width: 30px !important;"
+                  class="poiButtons wantIs{{item.want}}" ion-button icon-only want
+                  (click)="wantToVisitPoi(item._id,item.want)">
             <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
           </button>
         </div>

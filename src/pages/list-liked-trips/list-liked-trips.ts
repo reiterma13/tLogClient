@@ -6,7 +6,6 @@ import {Trip} from "../../models/models";
 import {Tlog} from "../../providers/tlog";
 import {AddTripPage} from "../add-trip/add-trip";
 import {TripPage} from "../trip/trip";
-import {RateTripPage} from "../rate-trip/rate-trip";
 
 @Component({
   selector: 'page-list-liked-trips',
@@ -112,24 +111,31 @@ export class ListLikedTripsPage {
       trip: tripID
     });
   }
-  save = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
+  saveLike = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
     .then(
-      trip => console.log(trip)
+
+      trip => console.log("save worked and this is trip :"+trip)
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
     );
-  dislikeTrip(tripID,liked){
-    console.log("oh you don't like )" +tripID + liked);
-    this.save(tripID,liked);
-  }
 
-  rateTrip(tripID, tripName) {
-    console.log("tripID is "+tripID);
-    console.log("trip name is "+tripName);
-    this.navCtrl.push(RateTripPage, {
-      trip: tripID,
-      name: tripName
+  likeTrip(tripID,liked){
+    if(liked==true){
+      liked=false;
+      console.log("oh you don't like )" +tripID + liked);
+
+    }else if(liked==false){
+      liked=true;
+      console.log("oh you like )" +tripID + liked);
+
+    }else{
+      console.log("oh you like )" +tripID + liked);
+    }
+    this.saveLike(tripID,liked);
+
+    this.navCtrl.push(ListLikedTripsPage, {
+
     });
 
   }

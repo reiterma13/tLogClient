@@ -122,4 +122,36 @@ export class WantToVisitPage {
       poi: poi
     });
   }
+
+  saveWantToVisitPoi = (tpoiID,want) => this.tLogService.wantToVistitPoi(tpoiID,want)
+    .then(
+
+      trip => console.log("save want worked and this is want :"+want)
+    )
+    .catch(
+      err => this.showAlert("ERROR",`${err.json().message}`)
+    );
+
+  wantToVisitPoi(tpoiID,want){
+    console.log("want is "+want)
+    if(want==true){
+      want=false;
+      console.log("oh you want to visit poi  )" +tpoiID + want);
+
+    }else if(want==false){
+      want=true;
+      console.log("oh you want to visit poi )" +tpoiID + want);
+
+    }else{
+      console.log("default)" +tpoiID + want);
+      want=false;
+    }
+    this.saveWantToVisitPoi(tpoiID,want);
+
+    this.navCtrl.push(WantToVisitPage, {
+
+    });
+
+  }
+
 }

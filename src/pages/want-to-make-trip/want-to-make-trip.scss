@@ -1,9 +1,9 @@
 page-want-to-make-trip {
 
 }
-body{
+#main{
   margin: 0;
-  width: 100%;
+  width: 70%;
 }
 #div1{
   height: 30px;
@@ -13,19 +13,10 @@ body{
 #div2{
   width:30%;
 }
-.listTripsButtons{
+.wantToMakeTripButtons{
   width: 30px !important;
   font-size: 30px !important;
 }
-.listTripsButtons.likeButton{
-  background-color: #2ec95c;
-}
-.listTripsButtons.dislikeButton{
-  background-color: #f30d0d !important;
-}
-.listTripsButtons.rateButton{
-  background-color: yellow !important;
-}
-.listTripsButtons.wantToVisit{
-  background-color: blue !important
+.wantToMakeTripButtons.wantIsNot{
+  background-color: red;
 }
