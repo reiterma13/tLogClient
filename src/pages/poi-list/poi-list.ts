@@ -62,6 +62,7 @@ export class PoiListPage {
       .then(pois => this.items = pois).then(() => {
       this.initSearchItems()
       loading.dismiss();
+      document.getElementById("title_name").innerHTML = "All POIs";
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no POIs yet. Press the Plus Icon to create one.")
       }
@@ -101,6 +102,7 @@ export class PoiListPage {
       .then(poi => this.items = poi).then(() => {
       this.items = this.getRandom(this.items, 5);
       this.initSearchItems();
+      document.getElementById("title_name").innerHTML = "Random POIs";
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no POIs yet. Press the Plus Icon to create one.")
@@ -121,6 +123,7 @@ export class PoiListPage {
       .then(this.tLogService.getMyPOIs)
       .then(pois => this.items = pois).then(() => {
       this.initSearchItems()
+      document.getElementById("title_name").innerHTML = "My Trips";
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "You do not have any POIs yet. Press the Plus Icon to create one.")
@@ -134,6 +137,8 @@ export class PoiListPage {
 
   private loggedIn:boolean = false;
   ionViewWillEnter = () => {
+
+    document.getElementById("title_name").innerHTML = "My Trips";
 
     this.security.getToken().then((token) =>{if (token) {this.loggedIn = true;}})
       .then((logged) =>{

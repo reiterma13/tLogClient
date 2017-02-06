@@ -15,9 +15,12 @@
           <ion-icon name="bulb"></ion-icon>
         </button>
       </ion-buttons>
+
     </ion-navbar>
     <ion-buttons end>
-      <button ion-button color="danger" (click)=logout()>Logout</button>
+      <button ion-button icon-only color="danger" (click)=logout()>
+        <ion-icon name="walk"></ion-icon>
+      </button>
       <button ion-button icon-only color="royal" (click)="addTrip()">
         <ion-icon name="add"></ion-icon>
       </button>
@@ -26,6 +29,7 @@
 </ion-header>
 
 <ion-content>
+  <h2 id="title_name" style="text-align: center"></h2>
   <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
   <ion-list>
       <div id="main"  class="likeDislikeDiv" *ngFor="let item of searchItems" style="white-space: nowrap  !important;">

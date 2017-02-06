@@ -88,6 +88,7 @@ export class ListPage {
       .then(trips => this.items = trips).then(() => {
       this.items = this.getRandom(this.items, 5);
       this.initSearchItems();
+      document.getElementById("title_name").innerHTML = "Random Trips";
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no Trips yet. Press the Plus Icon to create one.")
@@ -107,6 +108,7 @@ export class ListPage {
       .then(this.tLogService.getAllTrips)
       .then(trips => this.items = trips).then(() => {
       this.initSearchItems();
+      document.getElementById("title_name").innerHTML = "All Trips";
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no Trips yet. Press the Plus Icon to create one.")
@@ -126,6 +128,7 @@ export class ListPage {
       .then(this.tLogService.getTrips)
       .then(trips => this.items = trips).then(() => {
       this.initSearchItems()
+      document.getElementById("title_name").innerHTML = "My Trips";
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "You do not have any trips yet. Press the Plus Icon to create one.")
