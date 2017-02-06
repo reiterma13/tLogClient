@@ -122,7 +122,7 @@ export class PoiListPage {
       .then(this.tLogService.getMyPOIs)
       .then(pois => this.items = pois).then(() => {
       this.initSearchItems()
-      document.getElementById("title_name").innerHTML = "My Trips";
+      document.getElementById("title_name").innerHTML = "My POIs";
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "You do not have any POIs yet. Press the Plus Icon to create one.")
@@ -135,7 +135,7 @@ export class PoiListPage {
   }
 
   private loggedIn: boolean = false;
-  iionViewWillEnter = () => {
+  ionViewWillEnter = () => {
 
     this.security.getToken().then((token) =>{if (token) {this.loggedIn = true;}})
       .then((logged) =>{
