@@ -1,3 +1,22 @@
 page-show-poi {
-
+}
+.goldStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+.halfStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+.noStar{
+  color:transparent;
+  width: 30px;
+  height: 30px;
+}
+.noStar.halfStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
 }

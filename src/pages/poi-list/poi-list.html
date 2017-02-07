@@ -31,7 +31,7 @@
   <ion-list>
       <div id="main"  class="likeDislikeDiv" *ngFor="let item of searchItems" style="white-space: nowrap  !important;">
         <div id="div1">
-          <button style="width: 200px !important" ion-item (click)="itemTapped($event, item)" style="white-space: nowrap !important;">
+          <button style="width: 200px !important" ion-item (click)="itemTapped($event, item,item.totalrating)" style="white-space: nowrap !important;">
             <i class="fa fa-map-signs" aria-hidden="true"></i>
             {{item.name}}
           </button>

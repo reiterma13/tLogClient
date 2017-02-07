@@ -157,9 +157,10 @@ export class PoiListPage {
 
   };
 
-  itemTapped(event, poi) {
+  itemTapped(event, poi,totalrating) {
     this.navCtrl.push(ShowPoiPage, {
-      poi: poi
+      poi: poi,
+      totalrating: totalrating
     });
   }
 
