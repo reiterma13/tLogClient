@@ -5,25 +5,31 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-buttons>
-        <button ion-button icon-only ownTrips (click)="loadTrips()">
+        <button id="mine" style="margin-right: 7%" ion-button icon-only ownTrips (click)="loadTrips()">
           <ion-icon name="contact"></ion-icon>
         </button>
-        <button ion-button icon-only allTrips (click)="loadAllTrips()">
+        <button id="all" style="margin-right: 7%"  ion-button icon-only allTrips (click)="loadAllTrips()">
           <ion-icon name="contacts"></ion-icon>
         </button>
-        <button ion-button icon-only randomTrips (click)="loadRandomTrips()">
+        <button id="random" style="margin-right: 7%"  ion-button icon-only randomTrips (click)="loadRandomTrips()">
           <ion-icon name="bulb"></ion-icon>
         </button>
       </ion-buttons>
     </ion-navbar>
+
     <ion-buttons end>
-      <button ion-button icon-only color="danger" (click)=logout()>
-        <ion-icon name="log-out"></ion-icon>
-      </button>
+    <button ion-button icon-only color="danger" (click)=logout()>
+      <ion-icon name="log-out"></ion-icon>
+    </button>
+    </ion-buttons>
+
+    <ion-buttons end>
       <button ion-button icon-only color="royal" (click)="addTrip()">
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
+
+
   </ion-toolbar>
 </ion-header>
 

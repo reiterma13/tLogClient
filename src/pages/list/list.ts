@@ -89,6 +89,9 @@ export class ListPage {
       this.items = this.getRandom(this.items, 5);
       this.initSearchItems();
       document.getElementById("title_name").innerHTML = "Random Trips";
+      document.getElementById("mine").style.backgroundColor = 'white';
+      document.getElementById("all").style.backgroundColor = 'white';
+      document.getElementById("random").style.backgroundColor = '#dcdee2';
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no Trips yet. Press the Plus Icon to create one.")
@@ -109,6 +112,9 @@ export class ListPage {
       .then(trips => this.items = trips).then(() => {
       this.initSearchItems();
       document.getElementById("title_name").innerHTML = "All Trips";
+      document.getElementById("mine").style.backgroundColor = 'white';
+      document.getElementById("all").style.backgroundColor = '#dcdee2';
+      document.getElementById("random").style.backgroundColor = 'white';
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no Trips yet. Press the Plus Icon to create one.")
@@ -129,6 +135,9 @@ export class ListPage {
       .then(trips => this.items = trips).then(() => {
       this.initSearchItems()
       document.getElementById("title_name").innerHTML = "My Trips";
+      document.getElementById("mine").style.backgroundColor = '#dcdee2';
+      document.getElementById("all").style.backgroundColor = 'white';
+      document.getElementById("random").style.backgroundColor = 'white';
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "You do not have any trips yet. Press the Plus Icon to create one.")
@@ -199,9 +208,7 @@ export class ListPage {
     this.saveLike(tripID,liked);
 
     this.navCtrl.push(ListPage, {
-
     });
-
   }
 
   rateTrip(tripID, tripName) {
