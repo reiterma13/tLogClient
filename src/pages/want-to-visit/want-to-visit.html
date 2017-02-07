@@ -34,7 +34,7 @@
     <div *ngFor="let item of searchItems">
       <div id="main" *ngIf="item.want">
         <div id="div1">
-          <button ion-item (click)="itemTapped($event, item._id)">
+          <button ion-item (click)="itemTapped($event, item)">
             <i class="fa ion-ios-basket" style="color: greenyellow" aria-hidden="true"></i>
             {{item.name }}
           </button>
