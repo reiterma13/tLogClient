@@ -42,7 +42,7 @@ export class MyApp {
       { title: 'Liked POIs', component: ListLikedPoisPage },
       { title: 'Rated Trips', component: ListRatedTripsPage },
       { title: 'Rated POIs', component: ListRatedPoisPage },
-      { title: 'POIs within Radius', component: POIRadiusPage}
+      { title: 'POIs within Radius', component: POIRadiusPage},
       { title: 'Rated POIs', component: ListRatedPoisPage },
       { title: 'Best Rated Trips', component: BestRatedTripsPage },
       { title: 'Best Rated Pois', component: BestRatedPoisPage }

@@ -101,8 +101,7 @@ export function getAuthHttp(http) {
     WantToMakeTripPage,
     TripRatingDetailPage,
     PoiRatingDetailPage,
-    POIRadiusPage
-    PoiRatingDetailPage,
+    POIRadiusPage,
     BestRatedTripsPage,
     BestRatedPoisPage
   ],
