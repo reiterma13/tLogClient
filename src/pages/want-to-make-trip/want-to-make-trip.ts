@@ -170,7 +170,9 @@ export class WantToMakeTripPage {
   saveWantToMakeTrip = (tripID,want) => this.tLogService.wantToMakeTrip(tripID,want)
     .then(
 
-      trip => console.log("save want worked and this is trip :"+trip)
+      trip => {console.log("save want worked and this is trip :"+trip)
+               this.searchItems[this.searchItems.map(e => e._id).indexOf(trip._id)]=trip;
+      }
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
@@ -191,11 +193,5 @@ export class WantToMakeTripPage {
       want=false;
     }
     this.saveWantToMakeTrip(tripID,want);
-
-    this.navCtrl.push(WantToMakeTripPage, {
-
-    });
-
   }
-
 }

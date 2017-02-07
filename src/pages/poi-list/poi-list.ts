@@ -171,7 +171,9 @@ export class PoiListPage {
 
   save = (poiID, liked) => this.tLogService.likePoi(poiID, liked)
     .then(
-      poi => console.log("save worked and this is poi :" + poi)
+      poi => {console.log("save worked and this is poi :" + poi);
+              this.searchItems[this.searchItems.map(e => e._id).indexOf(poi._id)]=poi;
+      }
     )
     .catch(
       err => this.showAlert("ERROR", `${err.json().message}`)
@@ -190,16 +192,13 @@ export class PoiListPage {
       console.log("oh you like )" + poiID + liked);
     }
     this.save(poiID, liked);
-
-    this.navCtrl.push(PoiListPage, {
-    });
-
   }
 
   saveWantToVisitPoi = (tpoiID,want) => this.tLogService.wantToVistitPoi(tpoiID,want)
     .then(
-
-      trip => console.log("save want worked and this is want :"+want)
+      poi => {console.log("save want worked and this is want :"+want);
+               this.searchItems[this.searchItems.map(e => e._id).indexOf(poi._id)]=poi;
+      }
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
@@ -220,11 +219,6 @@ export class PoiListPage {
       want=false;
     }
     this.saveWantToVisitPoi(tpoiID,want);
-
-    this.navCtrl.push(PoiListPage, {
-
-    });
-
   }
 
   ratePoi(poiID, poiName) {
@@ -234,8 +228,5 @@ export class PoiListPage {
       poi: poiID,
       name: poiName
     });
-
   }
-
-
 }

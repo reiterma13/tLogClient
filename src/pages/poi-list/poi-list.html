@@ -37,13 +37,23 @@
           </button>
         </div>
         <div id="div2">
-          <button type="submit"
-                  class="listTripsButtons likedIs{{item.liked}} disable-hover button button-md button-default button-default-md" ion-button icon-only likeTrip
+          <button type="submit" *ngIf="item.liked"
+                  class="listTripsButtons likedIstrue disable-hover button button-md button-default button-default-md" ion-button icon-only like
                   (click)="likePoi(item._id,item.liked)">
-            <i class="fa ion-ios-{{item.liked==true?'happy':'sad'}}" aria-hidden="true"></i>
+            <i Class="fa ion-ios-happy" aria-hidden="true"></i>
           </button>
-          <button type="submit" style="width: 30px !important;"
-                  class="poiButtons wantIs{{item.want}} disable-hover button button-md button-default button-default-md" ion-button icon-only want
+          <button type="submit" *ngIf="item.liked==false"
+                  class="listTripsButtons likedIsfalse disable-hover button button-md button-default button-default-md" ion-button icon-only like
+                  (click)="likePoi(item._id,item.liked)">
+            <i Class="fa ion-ios-sad" aria-hidden="true"></i>
+          </button>
+          <button type="submit" *ngIf="item.want"
+                  class="listTripsButtons wantIstrue disable-hover button button-md button-default button-default-md" ion-button icon-only want
+                  (click)="wantToVisitPoi(item._id,item.want)">
+            <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
+          </button>
+          <button type="submit" *ngIf="item.want==false"
+                  class="listTripsButtons wantIsfalse disable-hover button button-md button-default button-default-md" ion-button icon-only want
                   (click)="wantToVisitPoi(item._id,item.want)">
             <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
           </button>
