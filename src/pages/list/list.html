@@ -38,20 +38,20 @@
         </button>
         </div>
         <div id="div2_list">
-          <button type="submit"  style="width: 30px !important;"
-                  class="listTripsButtons likedIs{{item.liked}}" ion-button icon-only like
+          <button type="submit"
+                  class="listTripsButtons likedIs{{item.liked}} disable-hover button button-md button-default button-default-md" ion-button icon-only like
                   (click)="likeTrip(item._id,item.liked)">
             <i class="fa ion-ios-{{item.liked==true?'happy':'sad'}}" aria-hidden="true"></i>
           </button>
-          <button type="submit" style="width: 30px !important; background-color: yellow !important;"
-                  class="listTripsButtons rateButton" ion-button icon-only rate
-                  (click)="rateTrip(item._id,item.name)">
-            <i class="fa ion-ios-star" aria-hidden="true"></i>
-          </button>
-          <button type="submit" style="width: 30px !important;"
-                  class="listTripsButtons wantIs{{item.want}}" ion-button icon-only want
+          <button type="submit"
+                  class="listTripsButtons wantIs{{item.want}} disable-hover button button-md button-default button-default-md" ion-button icon-only want
                   (click)="wantToMakeTrip(item._id,item.want)">
             <i class="fa ion-ios-checkmark-circle" aria-hidden="true"></i>
+          </button>
+          <button type="submit"
+                  class="listTripsButtons rateIsTrue disable-hover button button-md button-default button-default-md" ion-button icon-only rate
+                  (click)="rateTrip(item._id,item.name)">
+            <i class="fa ion-ios-star" aria-hidden="true"></i>
           </button>
         </div>
       </div>

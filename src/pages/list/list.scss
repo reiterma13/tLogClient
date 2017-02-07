@@ -22,8 +22,9 @@ body{
 .listTripsButtons.likedIsfalse{
   background-color: lightgrey !important;
 }
-.listTripsButtons.rateButton{
-  background-color: yellow !important;
+.listTripsButtons.rateIsTrue{
+  background-color: gold !important;
+  color: white !important;
 }
 .listTripsButtons.wantIstrue{
   background-color: #2ec95c !important
