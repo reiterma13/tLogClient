@@ -4,10 +4,11 @@ import {Geolocation, ActionSheet} from "ionic-native";
 import "leaflet";
 import "drmonty-leaflet-awesome-markers/js/leaflet.awesome-markers"
 import {Tlog} from "../../providers/tlog";
-import {Trip, POI} from "../../models/models";
+import {Trip, POI, User} from "../../models/models";
 import {AddPoiPage} from "../add-poi/add-poi";
 import {ShowPoiPage} from "../show-poi/show-poi";
 import {AddImagePage} from "../add-image/add-image";
+import {Security} from "../../providers/security";
 
 
 //COMMENTED AWESOME MARKERS - Stefan
@@ -29,6 +30,8 @@ export class TripPage {
   map: L.Map;
   currentLocationMarker: L.Marker;
   markers: L.Marker[];
+  u: User;
+  ownT: boolean = false;
   /*
   currentLocationIcon: L.AwesomeMarkers.Icon;
   pictureIcon: L.AwesomeMarkers.Icon;
@@ -42,7 +45,8 @@ export class TripPage {
               public navParams: NavParams,
               private loadingCtrl: LoadingController,
               private tlog: Tlog,
-              private asCtrl: ActionSheetController
+              private asCtrl: ActionSheetController,
+              private sec: Security
              ) {
     /* L.AwesomeMarkers.Icon.prototype.options.prefix = 'fa';
 
@@ -164,7 +168,11 @@ export class TripPage {
 
   onPopupOpen = (poi:POI) => (e:L.LeafletPopupEvent) => {
     this.map.panTo(e.target.getLatLng());
-    this.presentPOIActionSheet(poi);
+    if(this.trip.creator.local.username != this.u.username) {
+      this.showPoi(poi);
+    } else {
+      this.presentPOIActionSheet(poi);
+    }
   };
 
 
@@ -191,16 +199,27 @@ export class TripPage {
     });
 
   ionViewWillEnter = () => {
+
     if (this.currentLocationMarker) {
       this.map.removeLayer(this.currentLocationMarker);
       this.currentLocationMarker = null;
     }
     console.log('Hello TripPage Page to show: ' + this.navParams.get("trip"));
-    this.tlog.loadTrip(this.navParams.get("trip"))
-      .then(trip => {
-        this.trip = trip;
-        if (this.trip.pois.length === 0) this.getCurrentPosition(); else this.initMap()
-      })
+    this.sec.getUser().then(user => {
+      this.u = user;
+      this.tlog.loadTrip(this.navParams.get("trip"))
+        .then(trip => {
+          this.trip = trip;
+          if(this.trip.creator.local.username != this.u.username) {
+            this.ownT = false;
+            this.initMap();
+          } else {
+            this.ownT = true;
+            if (this.trip.pois.length === 0) this.getCurrentPosition(); else this.initMap();
+          }
+        })
+    })
+
   };
 
 

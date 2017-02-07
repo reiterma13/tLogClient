@@ -126,7 +126,9 @@ export class WantToVisitPage {
   saveWantToVisitPoi = (tpoiID,want) => this.tLogService.wantToVistitPoi(tpoiID,want)
     .then(
 
-      trip => console.log("save want worked and this is want :"+want)
+      poi => {console.log("save want worked and this is want :"+want);
+              this.searchItems[this.searchItems.map(e => e._id).indexOf(poi._id)]=poi;
+      }
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
@@ -147,11 +149,5 @@ export class WantToVisitPage {
       want=false;
     }
     this.saveWantToVisitPoi(tpoiID,want);
-
-    this.navCtrl.push(WantToVisitPage, {
-
-    });
-
   }
-
 }

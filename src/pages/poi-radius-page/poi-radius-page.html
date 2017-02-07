@@ -1,0 +1,31 @@
+<!--
+  Generated template for the POIRadiusPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-item>
+      <ion-range min="1000" max="20000" [(ngModel)]="radius" color="secondary" (ionChange)="changeRadius()">
+        <ion-label range-left>1km</ion-label>
+        <ion-label range-right>20km</ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-navbar>
+
+  <h2 style="text-align: center">POI Radius Page</h2>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="map-container">
+    <div id="map" style="width: 100%; height: 100%">
+    </div>
+  </div>
+</ion-content>

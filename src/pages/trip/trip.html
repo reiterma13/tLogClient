@@ -29,12 +29,12 @@
       </ion-title>
     </ion-navbar>
     <ion-buttons end>
-      <button ion-button icon-only color="royal" [disabled]="currentLocationMarker" (click)="getCurrentPosition()" >
+      <button *ngIf="ownT" ion-button icon-only color="royal" [disabled]="currentLocationMarker" (click)="getCurrentPosition()" >
         <ion-icon name="pin"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button icon-only color="royal" [disabled]="!currentLocationMarker" (click)="addPOI()" >
+      <button *ngIf="ownT" ion-button icon-only color="royal" [disabled]="!currentLocationMarker" (click)="addPOI()" >
         <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>

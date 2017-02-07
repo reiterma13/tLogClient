@@ -152,7 +152,9 @@ export class ListLikedPoisPage {
   }
   save = (poiID, liked) => this.tLogService.likePoi(poiID, liked)
     .then(
-      poi => console.log("save worked and this is poi :" + poi)
+      poi => {console.log("save worked and this is poi :" + poi)
+              this.searchItems[this.searchItems.map(e => e._id).indexOf(poi._id)]=poi;
+      }
     )
     .catch(
       err => this.showAlert("ERROR", `${err.json().message}`)
@@ -171,10 +173,5 @@ export class ListLikedPoisPage {
       console.log("oh you like )" + poiID + liked);
     }
     this.save(poiID, liked);
-
-    this.navCtrl.push(ListLikedPoisPage, {
-    });
-
   }
-
 }

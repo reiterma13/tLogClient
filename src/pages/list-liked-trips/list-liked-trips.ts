@@ -114,7 +114,8 @@ export class ListLikedTripsPage {
   saveLike = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
     .then(
 
-      trip => console.log("save worked and this is trip :"+trip)
+      trip => {console.log("save worked and this is trip :"+trip)
+               this.searchItems[this.searchItems.map(e => e._id).indexOf(trip._id)]=trip;}
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
@@ -133,11 +134,6 @@ export class ListLikedTripsPage {
       console.log("oh you like )" +tripID + liked);
     }
     this.saveLike(tripID,liked);
-
-    this.navCtrl.push(ListLikedTripsPage, {
-
-    });
-
   }
 
 }

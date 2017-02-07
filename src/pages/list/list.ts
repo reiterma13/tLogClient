@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-
+import {Component} from '@angular/core';
 import {NavController, NavParams, AlertController, LoadingController} from 'ionic-angular';
-
 import {Security} from '../../providers/security';
 import {LoginPage} from "../login/login";
 import {Trip} from "../../models/models";
@@ -57,7 +55,6 @@ export class ListPage {
     message: message,
     buttons: ['OK']
   }).present();
-
 
   getRandom = (arr: Array<Trip> , n:number) => {
     var result = new Array(n);
@@ -170,7 +167,6 @@ export class ListPage {
     });
   }
 
-
   buildForm(): void {
     this.tripForm = this.fb.group({
       'liked': [this.trip.liked,[]]
@@ -183,12 +179,12 @@ export class ListPage {
     this.buildForm();
   }
 
-
-
   saveLike = (tripID,liked) => this.tLogService.likeTrip(tripID,liked)
     .then(
 
-      trip => console.log("save worked and this is trip :"+trip)
+      trip => {console.log("save worked and this is trip :"+trip);
+               this.searchItems[this.searchItems.map(e => e._id).indexOf(trip._id)]=trip;
+      }
     )
     .catch(
       err => this.showAlert("ERROR",`${err.json().message}`)
@@ -207,9 +203,6 @@ export class ListPage {
       console.log("oh you like )" +tripID + liked);
     }
     this.saveLike(tripID,liked);
-
-    this.navCtrl.push(ListPage, {
-    });
   }
 
   rateTrip(tripID, tripName) {
@@ -219,16 +212,17 @@ export class ListPage {
       trip: tripID,
       name: tripName
     });
-
   }
 
   logout = () => this.security.logout().then(() => {this.loggedIn = false; location.reload()});
 
-
   saveWantToMakeTrip = (tripID,want) => this.tLogService.wantToMakeTrip(tripID,want)
   .then(
 
-    trip => console.log("save want worked and this is trip :"+trip)
+    trip => {
+      console.log("save want worked and this is trip :" + trip)
+      this.searchItems[this.searchItems.map(e => e._id).indexOf(trip._id)] = trip;
+    }
   )
   .catch(
     err => this.showAlert("ERROR",`${err.json().message}`)
@@ -249,11 +243,5 @@ export class ListPage {
       want=false;
     }
     this.saveWantToMakeTrip(tripID,want);
-
-    this.navCtrl.push(ListPage, {
-
-    });
-
   }
-
 }
