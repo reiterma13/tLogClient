@@ -3,6 +3,7 @@ import {SafeUrl} from "@angular/platform-browser";
  * Created by salho on 18.11.16.
  */
 export class User {
+  _id?: string;
   username: string;
   password: string;
   email: string;
@@ -38,7 +39,7 @@ export class Trip {
   begin?: Date;
   end?: Date;
   createdAt?: Date;
-  creator?: {username: {local: string}};
+  creator?: {local: {username: string}};
   pois?:[POI];
   liked?: Boolean;
   rating?: Boolean;
