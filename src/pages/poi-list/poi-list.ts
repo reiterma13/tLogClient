@@ -63,6 +63,9 @@ export class PoiListPage {
       this.initSearchItems()
       loading.dismiss();
       document.getElementById("title_name").innerHTML = "All POIs";
+      document.getElementById("mine").style.backgroundColor = 'white';
+      document.getElementById("all").style.backgroundColor = '#dcdee2';
+      document.getElementById("random").style.backgroundColor = 'white';
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no POIs yet. Press the Plus Icon to create one.")
       }
@@ -103,6 +106,9 @@ export class PoiListPage {
       this.items = this.getRandom(this.items, 5);
       this.initSearchItems();
       document.getElementById("title_name").innerHTML = "Random POIs";
+      document.getElementById("mine").style.backgroundColor = 'white';
+      document.getElementById("all").style.backgroundColor = 'white';
+      document.getElementById("random").style.backgroundColor = '#dcdee2';
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "There are no POIs yet. Press the Plus Icon to create one.")
@@ -123,6 +129,9 @@ export class PoiListPage {
       .then(pois => this.items = pois).then(() => {
       this.initSearchItems()
       document.getElementById("title_name").innerHTML = "My POIs";
+      document.getElementById("mine").style.backgroundColor = '#dcdee2';
+      document.getElementById("all").style.backgroundColor = 'white';
+      document.getElementById("random").style.backgroundColor = 'white';
       loading.dismiss();
       if (this.items.length === 0) {
         this.showAlert("INFO", "You do not have any POIs yet. Press the Plus Icon to create one.")

@@ -58,7 +58,7 @@ export class Tlog {
       console.log("GOT UPDATE Rate Trip RESPONSE: " + res.json());
       return res.json()
     });
-  }
+  };
 
   ratePoi = (poiID: string, rating: number ): Promise<POI> => {
 

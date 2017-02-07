@@ -190,7 +190,6 @@ export class TripPage {
       coordinates: this.currentLocationMarker.getLatLng()
     });
 
-
   ionViewWillEnter = () => {
     if (this.currentLocationMarker) {
       this.map.removeLayer(this.currentLocationMarker);

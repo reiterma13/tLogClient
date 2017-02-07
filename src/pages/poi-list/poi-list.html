@@ -5,13 +5,13 @@
         <ion-icon name="menu"></ion-icon>
       </button>
       <ion-buttons>
-        <button ion-button icon-only ownPOIs (click)="loadMyPOIs()">
+        <button id="mine" style="margin-right: 7%" ion-button icon-only ownPOIs (click)="loadMyPOIs()">
           <ion-icon name="contact"></ion-icon>
         </button>
-        <button ion-button icon-only allPOIs (click)="loadAllPOIs()">
+        <button id="all" style="margin-right: 7%" ion-button icon-only allPOIs (click)="loadAllPOIs()">
           <ion-icon name="contacts"></ion-icon>
         </button>
-        <button ion-button icon-only randomPOIs (click)="loadRandomPOIs()">
+        <button id="random" style="margin-right: 7%" ion-button icon-only randomPOIs (click)="loadRandomPOIs()">
           <ion-icon name="bulb"></ion-icon>
         </button>
       </ion-buttons>
@@ -20,9 +20,6 @@
     <ion-buttons end>
       <button ion-button icon-only color="danger" (click)=logout()>
         <ion-icon name="log-out"></ion-icon>
-      </button>
-      <button ion-button icon-only color="royal" (click)="addTrip()">
-        <ion-icon name="add"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
