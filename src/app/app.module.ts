@@ -29,6 +29,8 @@ import {RatePoiPage} from "../pages/rate-poi/rate-poi";
 import {WantToMakeTripPage} from "../pages/want-to-make-trip/want-to-make-trip";
 import {TripRatingDetailPage} from "../pages/trip-rating-detail/trip-rating-detail";
 import {PoiRatingDetailPage} from "../pages/poi-rating-detail/poi-rating-detail";
+import {BestRatedTripsPage} from "../pages/best-rated-trips/best-rated-trips";
+import {BestRatedPoisPage} from "../pages/best-rated-pois/best-rated-pois";
 
 
 let storage = new Storage();
@@ -66,7 +68,9 @@ export function getAuthHttp(http) {
     RatePoiPage,
     WantToMakeTripPage,
     TripRatingDetailPage,
-    PoiRatingDetailPage
+    PoiRatingDetailPage,
+    BestRatedTripsPage,
+    BestRatedPoisPage
   ],
   imports: [
     IonicModule.forRoot(MyApp), ReactiveFormsModule
@@ -94,8 +98,9 @@ export function getAuthHttp(http) {
     RatePoiPage,
     WantToMakeTripPage,
     TripRatingDetailPage,
-    PoiRatingDetailPage
-
+    PoiRatingDetailPage,
+    BestRatedTripsPage,
+    BestRatedPoisPage
   ],
   providers: [Security,
     {
