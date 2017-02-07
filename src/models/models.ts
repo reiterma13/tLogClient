@@ -23,6 +23,7 @@ export class POI {
   createdAt: Date;
   liked?:Boolean;
   rating?:Boolean;
+  totalrating?:Number;
   want?: Boolean;
   loc: {
     coordinates: number[]
@@ -41,5 +42,6 @@ export class Trip {
   pois?:[POI];
   liked?: Boolean;
   rating?: Boolean;
+  totalrating?: Number;
   want?: Boolean;
 }

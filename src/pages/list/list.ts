@@ -154,9 +154,10 @@ export class ListPage {
 
   };
 
-  itemTapped(event, tripID) {
+  itemTapped(event, tripID, totalrating) {
     this.navCtrl.push(TripPage, {
-      trip: tripID
+      trip: tripID,
+      totalrating:totalrating
     });
   }
 

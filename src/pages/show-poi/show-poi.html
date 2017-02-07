@@ -7,9 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{poi.name}}</ion-title>
+    <ion-title>{{poi.name}}<br>
+      <i id="starTotalRating" class="
+        {{poi.totalrating>=1?'goldStar':'noStar'}}
+        fa ion-ios-star" aria-hidden="true"></i>
+      <i id="starTotalRating" class="
+        {{poi.totalrating>=2?'goldStar':'noStar'}}
+        fa ion-ios-star{{poi.totalrating==1.5?'-half halfStar':''}}" aria-hidden="true"></i>
+      <i id="starTotalRating" class="
+        {{poi.totalrating>=3?'goldStar':'noStar'}}
+        fa ion-ios-star{{poi.totalrating==2.5?'-half halfStar':''}}" aria-hidden="true"></i>
+      <i id="starTotalRating" class="
+        {{poi.totalrating>=4?'goldStar':'noStar'}}
+        fa ion-ios-star{{poi.totalrating==3.5?'-half halfStar':''}}" aria-hidden="true"></i>
+      <i id="starTotalRating" class="
+        {{poi.totalrating==5?'goldStar':'noStar'}}
+        fa ion-ios-star{{poi.totalrating==4.5?'-half halfStar':''}}" aria-hidden="true"></i>
+    </ion-title>
   </ion-navbar>
-
 </ion-header>
 
 

@@ -5,14 +5,28 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-toolbar>
     <ion-navbar>
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
-      <ion-title>{{trip.name}}</ion-title>
-
+      <ion-title>{{trip.name}}<br>
+        <i id="starTotalRating" class="
+        {{trip.totalrating>=1?'goldStar':'noStar'}}
+        fa ion-ios-star" aria-hidden="true"></i>
+        <i id="starTotalRating" class="
+        {{trip.totalrating>=2?'goldStar':'noStar'}}
+        fa ion-ios-star{{trip.totalrating==1.5?'-half halfStar':''}}" aria-hidden="true"></i>
+        <i id="starTotalRating" class="
+        {{trip.totalrating>=3?'goldStar':'noStar'}}
+        fa ion-ios-star{{trip.totalrating==2.5?'-half halfStar':''}}" aria-hidden="true"></i>
+        <i id="starTotalRating" class="
+        {{trip.totalrating>=4?'goldStar':'noStar'}}
+        fa ion-ios-star{{trip.totalrating==3.5?'-half halfStar':''}}" aria-hidden="true"></i>
+        <i id="starTotalRating" class="
+        {{trip.totalrating==5?'goldStar':'noStar'}}
+        fa ion-ios-star{{trip.totalrating==4.5?'-half halfStar':''}}" aria-hidden="true"></i>
+      </ion-title>
     </ion-navbar>
     <ion-buttons end>
       <button ion-button icon-only color="royal" [disabled]="currentLocationMarker" (click)="getCurrentPosition()" >
