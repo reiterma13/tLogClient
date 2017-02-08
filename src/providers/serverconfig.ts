@@ -12,9 +12,9 @@ export class Serverconfig {
 
   //private _host = "http://169.254.154.55:3000/api";
   //private _host = "http://10.0.0.6:3000/api";
-  private _host = "http://10.15.201.78:3000/api";
+  private _host = "http://10.15.200.138:3000/api";
   //private _host = "http://10.15.201.78:3000/api";
-  private _host = "http://localhost:3000/api";
+  //private _host = "http://localhost:3000/api";
   private _loginURI = `${this._host}/auth/login`;
   private _registerURI = `${this._host}/auth/signup`;
   private _mineURI = `${this._host}/trip/mine`;
