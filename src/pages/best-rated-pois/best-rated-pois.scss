@@ -1,0 +1,58 @@
+page-best-rated-pois {
+
+}
+#main{
+  margin: 0;
+  width: 70%;
+}
+#div1{
+  height: 30px;
+  min-width: 40%;
+  float: left;
+}
+#div2{
+  width:30%;
+}
+.poiButtons{
+  width: 30px !important;
+  font-size: 30px !important;
+}
+.poiButtons.likedIstrue{
+  background-color: #2ec95c;
+}
+.poiButtons.likedIsfalse{
+  background-color: lightgrey !important;
+}
+.poiButtons.rateButton{
+  background-color: gold !important;
+  color: white !important;
+}
+.poiButtons.wantIstrue{
+  background-color: #2ec95c !important
+}
+.poiButtons.wantIsfalse{
+  background-color: lightgrey !important
+}
+
+
+.goldStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+.halfStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+.noStar{
+  color:transparent;
+  width: 30px;
+  height: 30px;
+}
+.noStar.halfStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+

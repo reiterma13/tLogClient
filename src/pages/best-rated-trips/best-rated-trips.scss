@@ -1,0 +1,61 @@
+page-best-rated-trips {
+
+}
+body{
+  margin: 0;
+  width: 100%;
+}
+#div1{
+  height: 30px;
+  min-width: 40%;
+  float: left;
+}
+#div2{
+  width:30%;
+}
+.listTripsButtons{
+  width: 30px !important;
+  font-size: 30px !important;
+}
+.listTripsButtons.likedIstrue{
+  background-color: #2ec95c;
+}
+.listTripsButtons.likedIsfalse{
+  background-color: lightgrey !important;
+}
+.listTripsButtons.rateIsTrue{
+  background-color: gold !important;
+  color: white !important;
+}
+.listTripsButtons.wantIstrue{
+  background-color: #2ec95c !important
+}
+.listTripsButtons.wantIsfalse{
+  background-color: lightgrey !important
+}
+
+.testButton.active{
+  background-color:red;
+}
+.goldStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+.halfStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+.noStar{
+  color:transparent;
+  width: 30px;
+  height: 30px;
+}
+.noStar.halfStar{
+  color:gold;
+  width: 30px;
+  height: 30px;
+}
+
+
