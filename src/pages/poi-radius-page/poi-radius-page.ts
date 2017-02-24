@@ -84,7 +84,7 @@ export class POIRadiusPage {
       })
   };
 
-  changeRadius = (changes) => {
+  changeRadius = () => {
 
     this.filterCircle.setRadius(this.radius);
     this.markersFiltered.forEach(marker => this.map.removeLayer(marker));
