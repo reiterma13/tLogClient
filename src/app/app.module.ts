@@ -27,8 +27,6 @@ import {ListRatedTripsPage} from "../pages/list-rated-trips/list-rated-trips";
 import {ListRatedPoisPage} from "../pages/list-rated-pois/list-rated-pois";
 import {RatePoiPage} from "../pages/rate-poi/rate-poi";
 import {WantToMakeTripPage} from "../pages/want-to-make-trip/want-to-make-trip";
-import {TripRatingDetailPage} from "../pages/trip-rating-detail/trip-rating-detail";
-import {PoiRatingDetailPage} from "../pages/poi-rating-detail/poi-rating-detail";
 import {POIRadiusPage} from "../pages/poi-radius-page/poi-radius-page";
 import {BestRatedTripsPage} from "../pages/best-rated-trips/best-rated-trips";
 import {BestRatedPoisPage} from "../pages/best-rated-pois/best-rated-pois";
@@ -68,8 +66,6 @@ export function getAuthHttp(http) {
     ListRatedTripsPage,
     RatePoiPage,
     WantToMakeTripPage,
-    TripRatingDetailPage,
-    PoiRatingDetailPage,
     POIRadiusPage,
     BestRatedTripsPage,
     BestRatedPoisPage
@@ -99,8 +95,6 @@ export function getAuthHttp(http) {
     ListRatedPoisPage,
     RatePoiPage,
     WantToMakeTripPage,
-    TripRatingDetailPage,
-    PoiRatingDetailPage,
     POIRadiusPage,
     BestRatedTripsPage,
     BestRatedPoisPage

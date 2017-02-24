@@ -141,12 +141,22 @@ export class WantToMakeTripPage {
       });
   }
 
+  private loggedIn: boolean = false;
   ionViewWillEnter = () => {
-    this.security.isNotloggedIn().then(exp => {
-      if (exp) {this.navCtrl.setRoot(LoginPage)}
-      else {this.loadTrips();}
-    });
-  }
+    this.security.getToken().then((token) =>{if (token) {this.loggedIn = true;}})
+      .then((logged) =>{
+        if (this.loggedIn == false)
+        {this.navCtrl.push(LoginPage)}
+        else{
+          this.loadTrips();
+        }
+      });
+  };
+  logout = () => this.security.logout().then(() => {
+    this.loggedIn = false;
+    location.reload()
+  });
+
 
   itemTapped(event, tripID) {
     this.navCtrl.push(TripPage, {
